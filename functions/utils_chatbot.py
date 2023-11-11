@@ -2,6 +2,7 @@ import pymongo
 import streamlit as st
 from Scraping.Scraping import run_scrapy_chatbot_version
 from datetime import datetime
+import os
 
 
 @st.cache_resource
@@ -73,57 +74,71 @@ def get_chatbot_info(bot_id):
 
 def generate_chatbot_version(bot_id, version_name):
     # Busque as informações do chatbot no MongoDB
-    chatbot_info = get_chatbot_info(bot_id)
-    chatbot_name = chatbot_info.get("chatbot_name")
-    if chatbot_info:
-        start_urls = [chatbot_info.get("start_url")]
-        accepted_files = chatbot_info.get("allowed_files")
-        allowed_domains = chatbot_info.get("allowed_domains")
-        depth_limit = chatbot_info.get("depth_limit")
-        download_delay = chatbot_info.get("download_delay")
-        content_element = chatbot_info.get("content_element")
-        output_filename = f"chatbot_{bot_id}_version_{version_name}.json"
+    try:
+        chatbot_info = get_chatbot_info(bot_id)
+        chatbot_name = chatbot_info.get("chatbot_name")
+        if chatbot_info:
+            start_urls = [chatbot_info.get("start_url")]
+            accepted_files = chatbot_info.get("allowed_files")
+            allowed_domains = chatbot_info.get("allowed_domains")
+            depth_limit = chatbot_info.get("depth_limit")
+            download_delay = chatbot_info.get("download_delay")
+            content_element = chatbot_info.get("content_element")
+            output_filename = f"chatbot_{bot_id}_version_{version_name}.json"
 
-        run_scrapy_chatbot_version(
-            start_urls,
-            depth_limit,
-            download_delay,
-            accepted_files,
-            allowed_domains,
-            content_element,
-            output_filename,
-        )
+            with st.spinner(f'Gerando a versão {version_name} do chatbot...'):
+                run_scrapy_chatbot_version(
+                    start_urls,
+                    depth_limit,
+                    download_delay,
+                    accepted_files,
+                    allowed_domains,
+                    content_element,
+                    output_filename,
+                )
 
-        return {
-            "success": True,
-            "msg": f"Versão '{version_name}' do chatbot '{chatbot_name}' gerada com sucesso!",
-            "file_path": output_filename
-        }
-    else:
-        return {
-            "success": False,
-            "msg": "Erro ao buscar informações do chatbot no banco de dados!"
-        }
-
+            st.success(f"Versão '{version_name}' do chatbot '{chatbot_name}' gerada com sucesso!")
+                
+            with st.spinner(f'Salvando os dados da versão {version_name} no banco...'):
+                return_upload_version = upload_chatbot_version(bot_id,version_name, output_filename)
+            st.success("Salvo com sucesso!")
+            
+            return True
+                
+        else:
+            st.error("Erro ao buscar informações do chatbot no banco de dados!")
+            return False
+            
+    except Exception as e:
+        print(f"Erro durante a geração da nova versão: {e}")
+        st.error(f"Erro durante a geração da nova versão: {e}")
+        return False
+        
+        
 
 def upload_chatbot_version(chatbot_id,version_id, file_path):
-    # Ler o conteúdo do arquivo
-    with open(file_path, "r") as file:
-        content = file.read()
+    try:
+        # Ler o conteúdo do arquivo
+        with open(file_path, "r") as file:
+            content = file.read()
 
-    # Criar a estrutura de dados
-    data = {
-        "chatbot_id": chatbot_id,
-        "version_id": version_id,
-        "created_at": datetime.now(),
-        "content": content,
-    }
+        # Criar a estrutura de dados
+        data = {
+            "chatbot_id": chatbot_id,
+            "version_id": version_id,
+            "created_at": datetime.now(),
+            "content": content,
+        }
 
-    # Inserir os dados na coleção
-    result = versions_collection.insert_one(data)
+        # Inserir os dados na coleção
+        result = versions_collection.insert_one(data)
 
-    # Verificar se a inserção foi bem-sucedida
-    if result.inserted_id:
-        print(f"Versão {version_id} do Chatbot {chatbot_id} foi enviada com sucesso.")
-    else:
-        print("Erro ao enviar a versão do Chatbot.")
+        # Verificar se a inserção foi bem-sucedida
+        if result.inserted_id:
+            print(f"Versão {version_id} do Chatbot {chatbot_id} foi enviada com sucesso.")
+            os.remove(file_path)
+        else:
+            print("Erro ao enviar a versão do Chatbot.")
+            
+    except Exception as e:
+        print(f"Erro durante o upload e remoção do arquivo: {e}")

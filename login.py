@@ -21,5 +21,4 @@ LOGGED_IN = __login__obj.build_login_ui()
 
 if LOGGED_IN == True:
     __login__obj.show_sidebar_itens()
-    #__login__obj.logout_widget()
     switch_page("Home")

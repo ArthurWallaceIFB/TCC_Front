@@ -1,6 +1,5 @@
 import streamlit as st
 from functions.utils_chatbot import check_unique_telegram_key, save_new_chatbot, generate_chatbot_version, upload_chatbot_version
-import streamlit as st
 from streamlit_extras.switch_page_button import switch_page
 from functions.utils import get_decrypted_cookie, show_logout
 
@@ -9,7 +8,8 @@ from functions.utils import get_decrypted_cookie, show_logout
 #     page_icon="🤖"
 # )
 
-
+print("\n\n\nEntrou criar bot\n\n\n")
+st.empty()
 
 def create_bot_widget():
     st.title("Criar bot")
@@ -60,16 +60,8 @@ def create_bot_widget():
         if chatbot_id:
             
             st.success(f"Bot '{chatbot_name}' salvo com sucesso!")
-            with st.spinner(f'Gerando a versão {version_id} do chatbot...'):
-                return_generate = generate_chatbot_version(chatbot_id,version_id)
-            if return_generate["success"] == True:    
-                st.success(return_generate["msg"])
-                
-                with st.spinner(f'Salvando os dados da versão {version_id} no banco...'):
-                    return_upload_version = upload_chatbot_version(chatbot_id,version_id, return_generate["file_path"])
-                st.success("Salvo com sucesso!")
-            else:
-                st.error(return_generate["msg"])
+            generate_chatbot_version(chatbot_id,version_id)
+        
             
             
         else:

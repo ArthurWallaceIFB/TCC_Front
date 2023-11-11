@@ -175,11 +175,18 @@
         "documentation": {}
     },
     {
-        "label": "functions.utils_chatbot",
-        "kind": 6,
+        "label": "ObjectId",
+        "importPath": "bson",
+        "description": "bson",
         "isExtraImport": true,
+        "detail": "bson",
+        "documentation": {}
+    },
+    {
+        "label": "generate_chatbot_version",
         "importPath": "functions.utils_chatbot",
         "description": "functions.utils_chatbot",
+        "isExtraImport": true,
         "detail": "functions.utils_chatbot",
         "documentation": {}
     },
@@ -213,14 +220,6 @@
         "description": "functions.utils_chatbot",
         "isExtraImport": true,
         "detail": "functions.utils_chatbot",
-        "documentation": {}
-    },
-    {
-        "label": "ObjectId",
-        "importPath": "bson",
-        "description": "bson",
-        "isExtraImport": true,
-        "detail": "bson",
         "documentation": {}
     },
     {
@@ -348,6 +347,14 @@
         "documentation": {}
     },
     {
+        "label": "activate_version_by_id",
+        "importPath": "functions.utils_home",
+        "description": "functions.utils_home",
+        "isExtraImport": true,
+        "detail": "functions.utils_home",
+        "documentation": {}
+    },
+    {
         "label": "get_user_chatbots",
         "importPath": "functions.utils_home",
         "description": "functions.utils_home",
@@ -356,11 +363,19 @@
         "documentation": {}
     },
     {
-        "label": "userId",
-        "importPath": "pages.Criar_bot",
-        "description": "pages.Criar_bot",
+        "label": "update_chatbot_version",
+        "importPath": "functions.utils_home",
+        "description": "functions.utils_home",
         "isExtraImport": true,
-        "detail": "pages.Criar_bot",
+        "detail": "functions.utils_home",
+        "documentation": {}
+    },
+    {
+        "label": "delete_version_by_id",
+        "importPath": "functions.utils_home",
+        "description": "functions.utils_home",
+        "isExtraImport": true,
+        "detail": "functions.utils_home",
         "documentation": {}
     },
     {
@@ -466,7 +481,7 @@
         "kind": 2,
         "importPath": "functions.utils_chatbot",
         "description": "functions.utils_chatbot",
-        "peekOfCode": "def generate_chatbot_version(bot_id, version_name):\n    # Busque as informações do chatbot no MongoDB\n    chatbot_info = get_chatbot_info(bot_id)\n    chatbot_name = chatbot_info.get(\"chatbot_name\")\n    if chatbot_info:\n        start_urls = [chatbot_info.get(\"start_url\")]\n        accepted_files = chatbot_info.get(\"allowed_files\")\n        allowed_domains = chatbot_info.get(\"allowed_domains\")\n        depth_limit = chatbot_info.get(\"depth_limit\")\n        download_delay = chatbot_info.get(\"download_delay\")",
+        "peekOfCode": "def generate_chatbot_version(bot_id, version_name):\n    # Busque as informações do chatbot no MongoDB\n    try:\n        chatbot_info = get_chatbot_info(bot_id)\n        chatbot_name = chatbot_info.get(\"chatbot_name\")\n        if chatbot_info:\n            start_urls = [chatbot_info.get(\"start_url\")]\n            accepted_files = chatbot_info.get(\"allowed_files\")\n            allowed_domains = chatbot_info.get(\"allowed_domains\")\n            depth_limit = chatbot_info.get(\"depth_limit\")",
         "detail": "functions.utils_chatbot",
         "documentation": {}
     },
@@ -475,7 +490,7 @@
         "kind": 2,
         "importPath": "functions.utils_chatbot",
         "description": "functions.utils_chatbot",
-        "peekOfCode": "def upload_chatbot_version(chatbot_id,version_id, file_path):\n    # Ler o conteúdo do arquivo\n    with open(file_path, \"r\") as file:\n        content = file.read()\n    # Criar a estrutura de dados\n    data = {\n        \"chatbot_id\": chatbot_id,\n        \"version_id\": version_id,\n        \"created_at\": datetime.now(),\n        \"content\": content,",
+        "peekOfCode": "def upload_chatbot_version(chatbot_id,version_id, file_path):\n    try:\n        # Ler o conteúdo do arquivo\n        with open(file_path, \"r\") as file:\n            content = file.read()\n        # Criar a estrutura de dados\n        data = {\n            \"chatbot_id\": chatbot_id,\n            \"version_id\": version_id,\n            \"created_at\": datetime.now(),",
         "detail": "functions.utils_chatbot",
         "documentation": {}
     },
@@ -520,7 +535,34 @@
         "kind": 2,
         "importPath": "functions.utils_home",
         "description": "functions.utils_home",
-        "peekOfCode": "def get_user_chatbots(user_id):\n    try:\n        user_chatbots = chatbots_collection.find({\"UserIds\": user_id})\n        user_list = list(user_chatbots)\n         # Para cada chatbot do usuário, busca as versões e adiciona ao campo \"versions\"\n        for chatbot in user_list:\n            chatbot_id = ObjectId(chatbot[\"_id\"])\n            versions = list(versions_collection.find({\"chatbot_id\": chatbot_id}, {\"_id\": 1, \"chatbot_id\": 1, \"version_id\": 1, \"created_at\": 1}))\n            chatbot[\"versions\"] = versions\n        return user_list",
+        "peekOfCode": "def get_user_chatbots(user_id):\n    try:\n        user_chatbots = chatbots_collection.find({\"UserIds\": user_id})\n        user_list = list(user_chatbots)\n         # Para cada chatbot do usuário, busca as versões e adiciona ao campo \"versions\"\n        for chatbot in user_list:\n            chatbot_id = ObjectId(chatbot[\"_id\"])\n            versions = list(versions_collection.find({\"chatbot_id\": chatbot_id}, {\"_id\": 1, \"chatbot_id\": 1, \"version_id\": 1, \"created_at\": 1}).sort(\"created_at\", pymongo.DESCENDING))\n            chatbot[\"versions\"] = versions\n        return user_list",
+        "detail": "functions.utils_home",
+        "documentation": {}
+    },
+    {
+        "label": "activate_version_by_id",
+        "kind": 2,
+        "importPath": "functions.utils_home",
+        "description": "functions.utils_home",
+        "peekOfCode": "def activate_version_by_id(version_id_db):\n    try:\n        # Encontrar a versão pelo ID\n        version = versions_collection.find_one({\"_id\": version_id_db})\n        if version:\n            # Atualizar o campo 'actual_version' na collection de chatbots\n            chatbots_collection.update_one({\"_id\": version[\"chatbot_id\"]}, {\"$set\": {\"active_version\": version[\"version_id\"]}})\n            #st.success(f\"Versão ativada com sucesso para o Chatbot de ID: {version['chatbot_id']}\")\n            #TODO ADICIONAR REQUEST API PARA BUSCAR NOVAMENTE A VERSÃO NO MONGO\n            return True",
+        "detail": "functions.utils_home",
+        "documentation": {}
+    },
+    {
+        "label": "delete_version_by_id",
+        "kind": 2,
+        "importPath": "functions.utils_home",
+        "description": "functions.utils_home",
+        "peekOfCode": "def delete_version_by_id(version_id_db):\n    try:\n        # Encontrar a versão pelo ID\n        version = versions_collection.find_one({\"_id\": version_id_db})\n        if version:\n            # Excluir a versão da collection de versões\n            versions_collection.delete_one({\"_id\": version_id_db})\n            return True\n        else:\n            st.warning(f\"Versão com ID {version_id_db} não encontrada.\")",
+        "detail": "functions.utils_home",
+        "documentation": {}
+    },
+    {
+        "label": "update_chatbot_version",
+        "kind": 2,
+        "importPath": "functions.utils_home",
+        "description": "functions.utils_home",
+        "peekOfCode": "def update_chatbot_version(chatbot_id):\n    try:\n        # Buscar as versões do bot ordenadas por ordem decrescente pela data de criação\n        versions = list(versions_collection.find({\"chatbot_id\": ObjectId(chatbot_id)}, {\"_id\": 1, \"version_id\": 1, \"created_at\": 1}).sort(\"created_at\", pymongo.DESCENDING))\n        if versions:\n            # Obter o número da última versão e incrementar 1\n            last_version_number = int(versions[0][\"version_id\"].split(\".\")[0])\n            new_version_number = f\"{last_version_number + 1}.0\"\n            # Chamar a função para gerar a nova versão\n            generate_chatbot_version(ObjectId(chatbot_id), new_version_number)",
         "detail": "functions.utils_home",
         "documentation": {}
     },
@@ -538,7 +580,7 @@
         "kind": 5,
         "importPath": "functions.utils_home",
         "description": "functions.utils_home",
-        "peekOfCode": "chatbots_collection = db.chatbots\nversions_collection = db.chatbot_versions\ndef get_user_chatbots(user_id):\n    try:\n        user_chatbots = chatbots_collection.find({\"UserIds\": user_id})\n        user_list = list(user_chatbots)\n         # Para cada chatbot do usuário, busca as versões e adiciona ao campo \"versions\"\n        for chatbot in user_list:\n            chatbot_id = ObjectId(chatbot[\"_id\"])\n            versions = list(versions_collection.find({\"chatbot_id\": chatbot_id}, {\"_id\": 1, \"chatbot_id\": 1, \"version_id\": 1, \"created_at\": 1}))",
+        "peekOfCode": "chatbots_collection = db.chatbots\nversions_collection = db.chatbot_versions\ndef get_user_chatbots(user_id):\n    try:\n        user_chatbots = chatbots_collection.find({\"UserIds\": user_id})\n        user_list = list(user_chatbots)\n         # Para cada chatbot do usuário, busca as versões e adiciona ao campo \"versions\"\n        for chatbot in user_list:\n            chatbot_id = ObjectId(chatbot[\"_id\"])\n            versions = list(versions_collection.find({\"chatbot_id\": chatbot_id}, {\"_id\": 1, \"chatbot_id\": 1, \"version_id\": 1, \"created_at\": 1}).sort(\"created_at\", pymongo.DESCENDING))",
         "detail": "functions.utils_home",
         "documentation": {}
     },
@@ -547,7 +589,7 @@
         "kind": 5,
         "importPath": "functions.utils_home",
         "description": "functions.utils_home",
-        "peekOfCode": "versions_collection = db.chatbot_versions\ndef get_user_chatbots(user_id):\n    try:\n        user_chatbots = chatbots_collection.find({\"UserIds\": user_id})\n        user_list = list(user_chatbots)\n         # Para cada chatbot do usuário, busca as versões e adiciona ao campo \"versions\"\n        for chatbot in user_list:\n            chatbot_id = ObjectId(chatbot[\"_id\"])\n            versions = list(versions_collection.find({\"chatbot_id\": chatbot_id}, {\"_id\": 1, \"chatbot_id\": 1, \"version_id\": 1, \"created_at\": 1}))\n            chatbot[\"versions\"] = versions",
+        "peekOfCode": "versions_collection = db.chatbot_versions\ndef get_user_chatbots(user_id):\n    try:\n        user_chatbots = chatbots_collection.find({\"UserIds\": user_id})\n        user_list = list(user_chatbots)\n         # Para cada chatbot do usuário, busca as versões e adiciona ao campo \"versions\"\n        for chatbot in user_list:\n            chatbot_id = ObjectId(chatbot[\"_id\"])\n            versions = list(versions_collection.find({\"chatbot_id\": chatbot_id}, {\"_id\": 1, \"chatbot_id\": 1, \"version_id\": 1, \"created_at\": 1}).sort(\"created_at\", pymongo.DESCENDING))\n            chatbot[\"versions\"] = versions",
         "detail": "functions.utils_home",
         "documentation": {}
     },
@@ -736,7 +778,7 @@
         "kind": 5,
         "importPath": "pages.Home",
         "description": "pages.Home",
-        "peekOfCode": "userId = None\nif 'LOGGED_IN' in st.session_state and st.session_state['LOGGED_IN'] == True:\n        userId = get_decrypted_cookie(\"__userId__\")\n        show_logout()                \n        Home_widget()\nelse:\n    print(\"Not logged\")\n    switch_page(\"login\")",
+        "peekOfCode": "userId = None\nif 'LOGGED_IN' in st.session_state and st.session_state['LOGGED_IN'] == True:\n        userId = get_decrypted_cookie(\"__userId__\")\n        show_logout()                \n        Home_widget()\nelse:\n    print(\"\\n\\nNot logged HOME\\n\\n\")\n    switch_page(\"login\")",
         "detail": "pages.Home",
         "documentation": {}
     },
@@ -754,7 +796,7 @@
         "kind": 5,
         "importPath": "login",
         "description": "login",
-        "peekOfCode": "LOGGED_IN = __login__obj.build_login_ui()\nif LOGGED_IN == True:\n    __login__obj.show_sidebar_itens()\n    #__login__obj.logout_widget()\n    switch_page(\"Home\")",
+        "peekOfCode": "LOGGED_IN = __login__obj.build_login_ui()\nif LOGGED_IN == True:\n    __login__obj.show_sidebar_itens()\n    switch_page(\"Home\")",
         "detail": "login",
         "documentation": {}
     }

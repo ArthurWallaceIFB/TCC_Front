@@ -28,20 +28,43 @@
 
 .element-container:has(#button-after-activate-version)+div{
     position: absolute;
-
 }
 
 .element-container:has(#button-after-activate-version)+div button {
     float: right;
-    margin-right: 2rem;
+    margin-right: 5.5rem;
     background: transparent;
     border-color: green;
     color: white;
 }
 
+.element-container:has(#button-after-activate-version)+div button:hover p{
+    font-weight: bold;
+}
+
+
 .element-container:has(#button-after-activate-version)+div button:hover
 {
     color: white;
-    border-color: green;
-    background-color: green;
+    background-color: rgb(0 128 0 / 30%);
+}
+
+
+.element-container:has(#button-after-delete-version)+div{
+    position: absolute;
+    width: 50px;
+}
+
+.element-container:has(#button-after-delete-version)+div button {
+    float: right;
+    margin-right: 2rem;
+    background: transparent;
+    border-color: rgb(128, 15, 0);
+    color: white;
+}
+
+.element-container:has(#button-after-delete-version)+div button:hover
+{
+    color: white;
+    background-color: rgb(255 75 75 / 16%);
 }

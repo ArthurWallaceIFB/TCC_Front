@@ -3,14 +3,15 @@ import json
 from streamlit_extras.switch_page_button import switch_page
 import time
 from datetime import datetime
-from functions.utils_home import get_user_chatbots
+from functions.utils_home import activate_version_by_id, get_user_chatbots, update_chatbot_version, delete_version_by_id
 from functions.utils import get_decrypted_cookie, show_logout
-from pages.Criar_bot import userId
 
 # st.set_page_config(
 #     page_title="Home - IFBots",
 #     page_icon="🤖"
 # )   
+
+st.empty()
 
 def Home_widget():
     with open('style.css') as f:
@@ -35,29 +36,49 @@ def Home_widget():
 
     selected_chatbot = st.selectbox("Selecione um chatbot", [bot['chatbot_name'] for bot in dados])
 
-    def atualizar_versao():
-        with st.spinner('Atualizando versão...'):
-            time.sleep(5)
-        st.success('Atualização concluída!')
+    def atualizar_versao(bot_id):
+        update_chatbot_version_return = update_chatbot_version(bot_id)
+        if update_chatbot_version_return == True:
+            time.sleep(0.3)
+            st.rerun()
         
-    def ativar_versao(id):
-        with st.spinner(f'Ativando versão {id}...'):
-            time.sleep(5)
-        st.success(f'Versão {id} ativada com sucesso!')
+    def ativar_versao(version_name, version_id_db):
+        with st.spinner(f'Ativando versão {version_name}...'):
+            activate_version_return = activate_version_by_id(version_id_db)
+            if activate_version_return == True:
+                st.success(f'Versão {version_name} ativada com sucesso!')
+                time.sleep(0.3)
+                st.rerun()
+            else:
+                st.error(f"Erro ao ativar versão {version_name}")
+    
+    def deletar_versao(version_name, version_id_db):
+        with st.spinner(f'Deletando versão {version_name}...'):
+            delete_version_return = delete_version_by_id(version_id_db)
+            if delete_version_return == True:
+                st.success(f"Versão {version_name} deletada com sucesso!")
+                time.sleep(0.3)
+                st.rerun()
 
     # Função para exibir o status (emoji 🟢 ao lado do texto quando o status é ativo)
-    def exibir_status(status, version_id, bot_id):
+    def exibir_status(status, version_name, bot_id, version_id_db):
         if status == "Ativo":
             container.markdown('<span id="button-after-update-version"></span>', unsafe_allow_html=True)
-            button_key = f"atualizar_{bot_id}_{version_id}"
+            button_key = f"atualizar_{bot_id}_{version_name}"
             if container.button("Atualizar", key=button_key):
-                atualizar_versao()
+                atualizar_versao(bot_id)
                 
             return "Ativo 🟢"
         else:
             container.markdown('<span id="button-after-activate-version"></span>', unsafe_allow_html=True)
-            if container.button("Ativar"):
-                ativar_versao(version_id)
+            button_key = f"ativar_{bot_id}_{version_name}"
+            if container.button("Ativar", key=button_key):
+                ativar_versao(version_name, version_id_db)
+            
+            container.markdown('<span id="button-after-delete-version"></span>', unsafe_allow_html=True)
+            delete_button_key = f"deletar_{bot_id}_{version_name}"
+            if container.button("🗑️", key=delete_button_key):
+                deletar_versao(version_name, version_id_db)
             return "Inativo"
 
     # Mostrar versões do chatbot selecionado
@@ -65,7 +86,7 @@ def Home_widget():
         if bot['chatbot_name'] == selected_chatbot:
             st.subheader(f"**Chatbot: {bot['chatbot_name']}**")
             if bot.get('creation_date'):
-                st.write(f"**Data de criação:** {bot['creation_date']}")
+                st.write(f"**Data de criação:** {datetime.strptime(str(bot['creation_date']), '%Y-%m-%d %H:%M:%S.%f').strftime('%d/%m/%Y %H:%M:%S')}")
             
 
             if bot.get('versions'):
@@ -73,9 +94,9 @@ def Home_widget():
                     container = st.container()
                     container.markdown('#### Versão: {0}'.format(versao['version_id']), unsafe_allow_html=True)
                     is_active = versao['version_id'] == bot['active_version']
-                    container.write("**Status:** " + exibir_status("Ativo" if is_active else "Inativo", version_id=versao['version_id'], bot_id=versao['chatbot_id']))
+                    container.write("**Status:** " + exibir_status("Ativo" if is_active else "Inativo", version_name=versao['version_id'], bot_id=versao['chatbot_id'], version_id_db=versao['_id']))
                     #container.write(f"**URLs:** {', '.join(versao['Urls'])}")
-                    container.write(f"**Data de criação:** {versao['created_at']}")
+                    container.write(f"**Data de criação:** {datetime.strptime(str(versao['created_at']), '%Y-%m-%d %H:%M:%S.%f').strftime('%d/%m/%Y %H:%M:%S')}")
 
 
 
@@ -88,6 +109,6 @@ if 'LOGGED_IN' in st.session_state and st.session_state['LOGGED_IN'] == True:
         Home_widget()
         
 else:
-    print("Not logged")
+    print("\n\nNot logged HOME\n\n")
     switch_page("login")
 
