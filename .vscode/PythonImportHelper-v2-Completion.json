@@ -101,12 +101,19 @@
         "documentation": {}
     },
     {
-        "label": "pymongo",
-        "kind": 6,
+        "label": "EncryptedCookieManager",
+        "importPath": "streamlit_cookies_manager",
+        "description": "streamlit_cookies_manager",
         "isExtraImport": true,
-        "importPath": "pymongo",
-        "description": "pymongo",
-        "detail": "pymongo",
+        "detail": "streamlit_cookies_manager",
+        "documentation": {}
+    },
+    {
+        "label": "EncryptedCookieManager",
+        "importPath": "streamlit_cookies_manager",
+        "description": "streamlit_cookies_manager",
+        "isExtraImport": true,
+        "detail": "streamlit_cookies_manager",
         "documentation": {}
     },
     {
@@ -116,6 +123,23 @@
         "importPath": "streamlit",
         "description": "streamlit",
         "detail": "streamlit",
+        "documentation": {}
+    },
+    {
+        "label": "pymongo",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pymongo",
+        "description": "pymongo",
+        "detail": "pymongo",
+        "documentation": {}
+    },
+    {
+        "label": "run_scrapy_chatbot_version",
+        "importPath": "Scraping.Scraping",
+        "description": "Scraping.Scraping",
+        "isExtraImport": true,
+        "detail": "Scraping.Scraping",
         "documentation": {}
     },
     {
@@ -140,6 +164,63 @@
         "description": "datetime",
         "isExtraImport": true,
         "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "functions.utils_chatbot",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "functions.utils_chatbot",
+        "description": "functions.utils_chatbot",
+        "detail": "functions.utils_chatbot",
+        "documentation": {}
+    },
+    {
+        "label": "check_unique_telegram_key",
+        "importPath": "functions.utils_chatbot",
+        "description": "functions.utils_chatbot",
+        "isExtraImport": true,
+        "detail": "functions.utils_chatbot",
+        "documentation": {}
+    },
+    {
+        "label": "save_new_chatbot",
+        "importPath": "functions.utils_chatbot",
+        "description": "functions.utils_chatbot",
+        "isExtraImport": true,
+        "detail": "functions.utils_chatbot",
+        "documentation": {}
+    },
+    {
+        "label": "generate_chatbot_version",
+        "importPath": "functions.utils_chatbot",
+        "description": "functions.utils_chatbot",
+        "isExtraImport": true,
+        "detail": "functions.utils_chatbot",
+        "documentation": {}
+    },
+    {
+        "label": "upload_chatbot_version",
+        "importPath": "functions.utils_chatbot",
+        "description": "functions.utils_chatbot",
+        "isExtraImport": true,
+        "detail": "functions.utils_chatbot",
+        "documentation": {}
+    },
+    {
+        "label": "ObjectId",
+        "importPath": "bson",
+        "description": "bson",
+        "isExtraImport": true,
+        "detail": "bson",
         "documentation": {}
     },
     {
@@ -202,43 +283,11 @@
         "documentation": {}
     },
     {
-        "label": "EncryptedCookieManager",
-        "importPath": "streamlit_cookies_manager",
-        "description": "streamlit_cookies_manager",
+        "label": "switch_page",
+        "importPath": "streamlit_extras.switch_page_button",
+        "description": "streamlit_extras.switch_page_button",
         "isExtraImport": true,
-        "detail": "streamlit_cookies_manager",
-        "documentation": {}
-    },
-    {
-        "label": "check_unique_telegram_key",
-        "importPath": "functions.utils_create_bot",
-        "description": "functions.utils_create_bot",
-        "isExtraImport": true,
-        "detail": "functions.utils_create_bot",
-        "documentation": {}
-    },
-    {
-        "label": "save_new_chatbot",
-        "importPath": "functions.utils_create_bot",
-        "description": "functions.utils_create_bot",
-        "isExtraImport": true,
-        "detail": "functions.utils_create_bot",
-        "documentation": {}
-    },
-    {
-        "label": "generate_chatbot_version",
-        "importPath": "functions.utils_create_bot",
-        "description": "functions.utils_create_bot",
-        "isExtraImport": true,
-        "detail": "functions.utils_create_bot",
-        "documentation": {}
-    },
-    {
-        "label": "upload_chatbot_version",
-        "importPath": "functions.utils_create_bot",
-        "description": "functions.utils_create_bot",
-        "isExtraImport": true,
-        "detail": "functions.utils_create_bot",
+        "detail": "streamlit_extras.switch_page_button",
         "documentation": {}
     },
     {
@@ -250,12 +299,68 @@
         "documentation": {}
     },
     {
+        "label": "switch_page",
+        "importPath": "streamlit_extras.switch_page_button",
+        "description": "streamlit_extras.switch_page_button",
+        "isExtraImport": true,
+        "detail": "streamlit_extras.switch_page_button",
+        "documentation": {}
+    },
+    {
+        "label": "get_decrypted_cookie",
+        "importPath": "functions.utils",
+        "description": "functions.utils",
+        "isExtraImport": true,
+        "detail": "functions.utils",
+        "documentation": {}
+    },
+    {
+        "label": "show_logout",
+        "importPath": "functions.utils",
+        "description": "functions.utils",
+        "isExtraImport": true,
+        "detail": "functions.utils",
+        "documentation": {}
+    },
+    {
+        "label": "get_decrypted_cookie",
+        "importPath": "functions.utils",
+        "description": "functions.utils",
+        "isExtraImport": true,
+        "detail": "functions.utils",
+        "documentation": {}
+    },
+    {
+        "label": "show_logout",
+        "importPath": "functions.utils",
+        "description": "functions.utils",
+        "isExtraImport": true,
+        "detail": "functions.utils",
+        "documentation": {}
+    },
+    {
         "label": "time",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "time",
         "description": "time",
         "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_chatbots",
+        "importPath": "functions.utils_home",
+        "description": "functions.utils_home",
+        "isExtraImport": true,
+        "detail": "functions.utils_home",
+        "documentation": {}
+    },
+    {
+        "label": "userId",
+        "importPath": "pages.Criar_bot",
+        "description": "pages.Criar_bot",
+        "isExtraImport": true,
+        "detail": "pages.Criar_bot",
         "documentation": {}
     },
     {
@@ -285,84 +390,165 @@
         "documentation": {}
     },
     {
+        "label": "Utils",
+        "kind": 6,
+        "importPath": "functions.utils",
+        "description": "functions.utils",
+        "peekOfCode": "class Utils:\n    def __init__(self):\n        # Configuração do EncryptedCookieManager\n        self.cookies = EncryptedCookieManager(\n            prefix=\"streamlit_login_ui_yummy_cookies\",\n            password='9d68d6f2-4258-45c9-96eb-2d6bc74ddbb5-d8f49cab-edbb-404a-94d0-b25b1d4a564b'\n        )\n        if not self.cookies.ready():\n            st.stop()  \n    def get_decrypted_cookie(self, cookie_name):",
+        "detail": "functions.utils",
+        "documentation": {}
+    },
+    {
+        "label": "utils_instance",
+        "kind": 5,
+        "importPath": "functions.utils",
+        "description": "functions.utils",
+        "peekOfCode": "utils_instance = Utils()\n# Ao importar utils.py diretamente, utils_instance está disponível imediatamente\nget_decrypted_cookie = utils_instance.get_decrypted_cookie\nshow_logout = utils_instance.show_logout",
+        "detail": "functions.utils",
+        "documentation": {}
+    },
+    {
+        "label": "get_decrypted_cookie",
+        "kind": 5,
+        "importPath": "functions.utils",
+        "description": "functions.utils",
+        "peekOfCode": "get_decrypted_cookie = utils_instance.get_decrypted_cookie\nshow_logout = utils_instance.show_logout",
+        "detail": "functions.utils",
+        "documentation": {}
+    },
+    {
+        "label": "show_logout",
+        "kind": 5,
+        "importPath": "functions.utils",
+        "description": "functions.utils",
+        "peekOfCode": "show_logout = utils_instance.show_logout",
+        "detail": "functions.utils",
+        "documentation": {}
+    },
+    {
         "label": "init_connection",
         "kind": 2,
-        "importPath": "functions.utils_create_bot",
-        "description": "functions.utils_create_bot",
+        "importPath": "functions.utils_chatbot",
+        "description": "functions.utils_chatbot",
         "peekOfCode": "def init_connection():\n    client = pymongo.MongoClient(st.secrets[\"mongo\"][\"url\"])\n    db = client.TCC\n    return db\ndb = init_connection()\nchatbots_collection = db.chatbots\nversions_collection = db.chatbot_versions\ndef check_unique_telegram_key(telegram_key: str) -> bool:\n    return True\ndef save_new_chatbot(",
-        "detail": "functions.utils_create_bot",
+        "detail": "functions.utils_chatbot",
         "documentation": {}
     },
     {
         "label": "check_unique_telegram_key",
         "kind": 2,
-        "importPath": "functions.utils_create_bot",
-        "description": "functions.utils_create_bot",
+        "importPath": "functions.utils_chatbot",
+        "description": "functions.utils_chatbot",
         "peekOfCode": "def check_unique_telegram_key(telegram_key: str) -> bool:\n    return True\ndef save_new_chatbot(\n    chatbot_name,\n    telegram_api_key,\n    chatbot_description,\n    start_url,\n    allowed_domains,\n    allowed_files,\n    content_element,",
-        "detail": "functions.utils_create_bot",
+        "detail": "functions.utils_chatbot",
         "documentation": {}
     },
     {
         "label": "save_new_chatbot",
         "kind": 2,
-        "importPath": "functions.utils_create_bot",
-        "description": "functions.utils_create_bot",
+        "importPath": "functions.utils_chatbot",
+        "description": "functions.utils_chatbot",
         "peekOfCode": "def save_new_chatbot(\n    chatbot_name,\n    telegram_api_key,\n    chatbot_description,\n    start_url,\n    allowed_domains,\n    allowed_files,\n    content_element,\n    requests_delay_ms,\n    max_assync_requests,",
-        "detail": "functions.utils_create_bot",
+        "detail": "functions.utils_chatbot",
         "documentation": {}
     },
     {
         "label": "get_chatbot_info",
         "kind": 2,
-        "importPath": "functions.utils_create_bot",
-        "description": "functions.utils_create_bot",
+        "importPath": "functions.utils_chatbot",
+        "description": "functions.utils_chatbot",
         "peekOfCode": "def get_chatbot_info(bot_id):\n    try:\n        print(bot_id)\n        chatbot_info = chatbots_collection.find_one({\"_id\": bot_id})\n        return chatbot_info\n    except Exception as e:\n        print(f\"Erro ao buscar informações do chatbot no MongoDB: {e}\")\n        return None\ndef generate_chatbot_version(bot_id, version_name):\n    # Busque as informações do chatbot no MongoDB",
-        "detail": "functions.utils_create_bot",
+        "detail": "functions.utils_chatbot",
         "documentation": {}
     },
     {
         "label": "generate_chatbot_version",
         "kind": 2,
-        "importPath": "functions.utils_create_bot",
-        "description": "functions.utils_create_bot",
+        "importPath": "functions.utils_chatbot",
+        "description": "functions.utils_chatbot",
         "peekOfCode": "def generate_chatbot_version(bot_id, version_name):\n    # Busque as informações do chatbot no MongoDB\n    chatbot_info = get_chatbot_info(bot_id)\n    chatbot_name = chatbot_info.get(\"chatbot_name\")\n    if chatbot_info:\n        start_urls = [chatbot_info.get(\"start_url\")]\n        accepted_files = chatbot_info.get(\"allowed_files\")\n        allowed_domains = chatbot_info.get(\"allowed_domains\")\n        depth_limit = chatbot_info.get(\"depth_limit\")\n        download_delay = chatbot_info.get(\"download_delay\")",
-        "detail": "functions.utils_create_bot",
+        "detail": "functions.utils_chatbot",
         "documentation": {}
     },
     {
         "label": "upload_chatbot_version",
         "kind": 2,
-        "importPath": "functions.utils_create_bot",
-        "description": "functions.utils_create_bot",
+        "importPath": "functions.utils_chatbot",
+        "description": "functions.utils_chatbot",
         "peekOfCode": "def upload_chatbot_version(chatbot_id,version_id, file_path):\n    # Ler o conteúdo do arquivo\n    with open(file_path, \"r\") as file:\n        content = file.read()\n    # Criar a estrutura de dados\n    data = {\n        \"chatbot_id\": chatbot_id,\n        \"version_id\": version_id,\n        \"created_at\": datetime.now(),\n        \"content\": content,",
-        "detail": "functions.utils_create_bot",
+        "detail": "functions.utils_chatbot",
         "documentation": {}
     },
     {
         "label": "db",
         "kind": 5,
-        "importPath": "functions.utils_create_bot",
-        "description": "functions.utils_create_bot",
+        "importPath": "functions.utils_chatbot",
+        "description": "functions.utils_chatbot",
         "peekOfCode": "db = init_connection()\nchatbots_collection = db.chatbots\nversions_collection = db.chatbot_versions\ndef check_unique_telegram_key(telegram_key: str) -> bool:\n    return True\ndef save_new_chatbot(\n    chatbot_name,\n    telegram_api_key,\n    chatbot_description,\n    start_url,",
-        "detail": "functions.utils_create_bot",
+        "detail": "functions.utils_chatbot",
         "documentation": {}
     },
     {
         "label": "chatbots_collection",
         "kind": 5,
-        "importPath": "functions.utils_create_bot",
-        "description": "functions.utils_create_bot",
+        "importPath": "functions.utils_chatbot",
+        "description": "functions.utils_chatbot",
         "peekOfCode": "chatbots_collection = db.chatbots\nversions_collection = db.chatbot_versions\ndef check_unique_telegram_key(telegram_key: str) -> bool:\n    return True\ndef save_new_chatbot(\n    chatbot_name,\n    telegram_api_key,\n    chatbot_description,\n    start_url,\n    allowed_domains,",
-        "detail": "functions.utils_create_bot",
+        "detail": "functions.utils_chatbot",
         "documentation": {}
     },
     {
         "label": "versions_collection",
         "kind": 5,
-        "importPath": "functions.utils_create_bot",
-        "description": "functions.utils_create_bot",
+        "importPath": "functions.utils_chatbot",
+        "description": "functions.utils_chatbot",
         "peekOfCode": "versions_collection = db.chatbot_versions\ndef check_unique_telegram_key(telegram_key: str) -> bool:\n    return True\ndef save_new_chatbot(\n    chatbot_name,\n    telegram_api_key,\n    chatbot_description,\n    start_url,\n    allowed_domains,\n    allowed_files,",
-        "detail": "functions.utils_create_bot",
+        "detail": "functions.utils_chatbot",
+        "documentation": {}
+    },
+    {
+        "label": "init_connection",
+        "kind": 2,
+        "importPath": "functions.utils_home",
+        "description": "functions.utils_home",
+        "peekOfCode": "def init_connection():\n    client = pymongo.MongoClient(st.secrets[\"mongo\"][\"url\"])\n    db = client.TCC\n    return db\ndb = init_connection()\nchatbots_collection = db.chatbots\nversions_collection = db.chatbot_versions\ndef get_user_chatbots(user_id):\n    try:\n        user_chatbots = chatbots_collection.find({\"UserIds\": user_id})",
+        "detail": "functions.utils_home",
+        "documentation": {}
+    },
+    {
+        "label": "get_user_chatbots",
+        "kind": 2,
+        "importPath": "functions.utils_home",
+        "description": "functions.utils_home",
+        "peekOfCode": "def get_user_chatbots(user_id):\n    try:\n        user_chatbots = chatbots_collection.find({\"UserIds\": user_id})\n        user_list = list(user_chatbots)\n         # Para cada chatbot do usuário, busca as versões e adiciona ao campo \"versions\"\n        for chatbot in user_list:\n            chatbot_id = ObjectId(chatbot[\"_id\"])\n            versions = list(versions_collection.find({\"chatbot_id\": chatbot_id}, {\"_id\": 1, \"chatbot_id\": 1, \"version_id\": 1, \"created_at\": 1}))\n            chatbot[\"versions\"] = versions\n        return user_list",
+        "detail": "functions.utils_home",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "kind": 5,
+        "importPath": "functions.utils_home",
+        "description": "functions.utils_home",
+        "peekOfCode": "db = init_connection()\nchatbots_collection = db.chatbots\nversions_collection = db.chatbot_versions\ndef get_user_chatbots(user_id):\n    try:\n        user_chatbots = chatbots_collection.find({\"UserIds\": user_id})\n        user_list = list(user_chatbots)\n         # Para cada chatbot do usuário, busca as versões e adiciona ao campo \"versions\"\n        for chatbot in user_list:\n            chatbot_id = ObjectId(chatbot[\"_id\"])",
+        "detail": "functions.utils_home",
+        "documentation": {}
+    },
+    {
+        "label": "chatbots_collection",
+        "kind": 5,
+        "importPath": "functions.utils_home",
+        "description": "functions.utils_home",
+        "peekOfCode": "chatbots_collection = db.chatbots\nversions_collection = db.chatbot_versions\ndef get_user_chatbots(user_id):\n    try:\n        user_chatbots = chatbots_collection.find({\"UserIds\": user_id})\n        user_list = list(user_chatbots)\n         # Para cada chatbot do usuário, busca as versões e adiciona ao campo \"versions\"\n        for chatbot in user_list:\n            chatbot_id = ObjectId(chatbot[\"_id\"])\n            versions = list(versions_collection.find({\"chatbot_id\": chatbot_id}, {\"_id\": 1, \"chatbot_id\": 1, \"version_id\": 1, \"created_at\": 1}))",
+        "detail": "functions.utils_home",
+        "documentation": {}
+    },
+    {
+        "label": "versions_collection",
+        "kind": 5,
+        "importPath": "functions.utils_home",
+        "description": "functions.utils_home",
+        "peekOfCode": "versions_collection = db.chatbot_versions\ndef get_user_chatbots(user_id):\n    try:\n        user_chatbots = chatbots_collection.find({\"UserIds\": user_id})\n        user_list = list(user_chatbots)\n         # Para cada chatbot do usuário, busca as versões e adiciona ao campo \"versions\"\n        for chatbot in user_list:\n            chatbot_id = ObjectId(chatbot[\"_id\"])\n            versions = list(versions_collection.find({\"chatbot_id\": chatbot_id}, {\"_id\": 1, \"chatbot_id\": 1, \"version_id\": 1, \"created_at\": 1}))\n            chatbot[\"versions\"] = versions",
+        "detail": "functions.utils_home",
         "documentation": {}
     },
     {
@@ -528,6 +714,33 @@
         "documentation": {}
     },
     {
+        "label": "userId",
+        "kind": 5,
+        "importPath": "pages.Criar_bot",
+        "description": "pages.Criar_bot",
+        "peekOfCode": "userId = None\nif 'LOGGED_IN' in st.session_state and st.session_state['LOGGED_IN'] == True:\n        userId = get_decrypted_cookie(\"__userId__\")\n        show_logout()\n        create_bot_widget()\nelse:\n    switch_page(\"login\")",
+        "detail": "pages.Criar_bot",
+        "documentation": {}
+    },
+    {
+        "label": "Home_widget",
+        "kind": 2,
+        "importPath": "pages.Home",
+        "description": "pages.Home",
+        "peekOfCode": "def Home_widget():\n    with open('style.css') as f:\n        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)\n    dados = get_user_chatbots(userId)\n    # Carregando os dados do arquivo JSON\n    # with open('chatbot_data.json', 'r') as json_file:\n    #     dados = json.load(json_file)\n    st.title(\"Gestão de Chatbots 🤖\")\n    st.markdown('<span id=\"button-after-create-bot\"></span>', unsafe_allow_html=True)\n    # Botão para criar um novo chatbot",
+        "detail": "pages.Home",
+        "documentation": {}
+    },
+    {
+        "label": "userId",
+        "kind": 5,
+        "importPath": "pages.Home",
+        "description": "pages.Home",
+        "peekOfCode": "userId = None\nif 'LOGGED_IN' in st.session_state and st.session_state['LOGGED_IN'] == True:\n        userId = get_decrypted_cookie(\"__userId__\")\n        show_logout()                \n        Home_widget()\nelse:\n    print(\"Not logged\")\n    switch_page(\"login\")",
+        "detail": "pages.Home",
+        "documentation": {}
+    },
+    {
         "label": "__login__obj",
         "kind": 5,
         "importPath": "login",
@@ -541,7 +754,7 @@
         "kind": 5,
         "importPath": "login",
         "description": "login",
-        "peekOfCode": "LOGGED_IN = __login__obj.build_login_ui()\nif LOGGED_IN == True:\n    __login__obj.show_sidebar_itens()\n    st.markdown(\"Your Streamlit Application Begins here!\")",
+        "peekOfCode": "LOGGED_IN = __login__obj.build_login_ui()\nif LOGGED_IN == True:\n    __login__obj.show_sidebar_itens()\n    #__login__obj.logout_widget()\n    switch_page(\"Home\")",
         "detail": "login",
         "documentation": {}
     }

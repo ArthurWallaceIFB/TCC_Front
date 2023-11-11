@@ -1,6 +1,8 @@
 import streamlit as st
-from functions.utils_create_bot import check_unique_telegram_key, save_new_chatbot, generate_chatbot_version, upload_chatbot_version
+from functions.utils_chatbot import check_unique_telegram_key, save_new_chatbot, generate_chatbot_version, upload_chatbot_version
 import streamlit as st
+from streamlit_extras.switch_page_button import switch_page
+from functions.utils import get_decrypted_cookie, show_logout
 
 # st.set_page_config(
 #     page_title="Novo chatbot",
@@ -53,8 +55,8 @@ def create_bot_widget():
 
     # Botões para Salvar, Limpar e Cancelar
     if st.button("Salvar"):
-        chatbot_id = save_new_chatbot(chatbot_name, api_key_telegram, chatbot_description, start_url, allowed_domains, allowed_files, content_element, requests_delay_seg, max_assync_requests, depth_limit)
         version_id = '1.0'
+        chatbot_id = save_new_chatbot(chatbot_name, api_key_telegram, chatbot_description, start_url, allowed_domains, allowed_files, content_element, requests_delay_seg, max_assync_requests, depth_limit, userId, version_id)
         if chatbot_id:
             
             st.success(f"Bot '{chatbot_name}' salvo com sucesso!")
@@ -74,26 +76,14 @@ def create_bot_widget():
             st.error("Erro ao criar o novo bot!")
         
         
-        
-# st.title("Executar Spider Scrapy a partir do Streamlit")
+userId = None
 
-# start_button = st.button("Iniciar Spider Scrapy")
+if 'LOGGED_IN' in st.session_state and st.session_state['LOGGED_IN'] == True:
+    
+        userId = get_decrypted_cookie("__userId__")
+        show_logout()
+        create_bot_widget()
 
-
-# if start_button:
-#     st.write("Iniciando o Spider Scrapy...")
-#     start_urls = [
-#         "https://www.ifb.edu.br/espaco-do-estudante/estagio/boletins-de-estagio/36579-boletim-de-estagio-n-40-2013-vagas-de-30-10-a-3-11"
-#     ]
-#     depth_limit = 2
-#     download_delay = 0.5
-#     accepted_files = ["pdf"]
-#     allowed_domains = ["www.ifb.edu.br", "ifb.edu.br", "processoseletivo.ifb.edu.br"]
-#     content_element = "#content"
-
-#     run_scrapy_chatbot_version(start_urls, depth_limit, download_delay, accepted_files, content_element, allowed_domains, content_element, "teste_salvar.json")
-#     #reactor.run()  # o script irá bloquear aqui até que o crawling esteja concluído
-#     st.write("Spider Scrapy concluído!")
-
-create_bot_widget()
+else:
+    switch_page("login")
 

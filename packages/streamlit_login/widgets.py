@@ -109,6 +109,7 @@ class __login__:
 
                     else:
                         st.session_state['LOGGED_IN'] = True
+                        st.session_state['UserId'] = authenticate_return['userId']
                         self.cookies['__streamlit_login_signup_ui_username__'] = username
                         self.cookies['__userId__'] = authenticate_return['userId']
                         self.cookies.save()

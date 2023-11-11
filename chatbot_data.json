@@ -14,14 +14,16 @@
         "active_version": "2",
         "versions": [
             {
-                "id": "2",
+                "version_id": "2",
+                "chatbot_id": "123",
                 "Urls": ["teste.com", "teste2.com"],
-                "UpdatedAt": "2023-10-05"
+                "created_at": "2023-10-05"
             },
             {
-                "id": "1",
+                "version_id": "1",
+                "chatbot_id": "123",
                 "Urls": ["teste3.com", "teste4.com"],
-                "UpdatedAt": "2023-09-20"
+                "created_at": "2023-09-20"
             }
         ]
     },
@@ -32,9 +34,10 @@
         "active_version": "1",
         "versions": [
             {
-                "id": "1",
+                "version_id": "1",
+                "chatbot_id": "123",
                 "Urls": ["teste5.com", "teste6.com"],
-                "UpdatedAt": "2023-09-30"
+                "created_at": "2023-09-30"
             }
         ]
     }

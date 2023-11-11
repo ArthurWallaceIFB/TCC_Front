@@ -31,11 +31,14 @@ def save_new_chatbot(
     requests_delay_ms,
     max_assync_requests,
     depth_limit,
+    user_id,
+    version_id
 ):
     try:
         # Monte o objeto do novo bot
         bot_data = {
             "chatbot_name": chatbot_name,
+            "UserIds": [user_id],
             "telegram_api_key": telegram_api_key,
             "chatbot_description": chatbot_description,
             "start_url": start_url,
@@ -45,6 +48,7 @@ def save_new_chatbot(
             "max_assync_requests": max_assync_requests,
             "depth_limit": depth_limit,
             "content_element": content_element,
+            "active_version": version_id
         }
 
         # Insira os dados do novo bot na coleção
