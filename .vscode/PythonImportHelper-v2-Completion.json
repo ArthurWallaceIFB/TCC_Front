@@ -1,0 +1,548 @@
+[
+    {
+        "label": "io",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "io",
+        "description": "io",
+        "detail": "io",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "urlparse",
+        "importPath": "urllib.parse",
+        "description": "urllib.parse",
+        "isExtraImport": true,
+        "detail": "urllib.parse",
+        "documentation": {}
+    },
+    {
+        "label": "BeautifulSoup",
+        "importPath": "bs4",
+        "description": "bs4",
+        "isExtraImport": true,
+        "detail": "bs4",
+        "documentation": {}
+    },
+    {
+        "label": "PdfReader",
+        "importPath": "PyPDF2",
+        "description": "PyPDF2",
+        "isExtraImport": true,
+        "detail": "PyPDF2",
+        "documentation": {}
+    },
+    {
+        "label": "scrapy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "scrapy",
+        "description": "scrapy",
+        "detail": "scrapy",
+        "documentation": {}
+    },
+    {
+        "label": "scrapy.crawler",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "scrapy.crawler",
+        "description": "scrapy.crawler",
+        "detail": "scrapy.crawler",
+        "documentation": {}
+    },
+    {
+        "label": "configure_logging",
+        "importPath": "scrapy.utils.log",
+        "description": "scrapy.utils.log",
+        "isExtraImport": true,
+        "detail": "scrapy.utils.log",
+        "documentation": {}
+    },
+    {
+        "label": "reactor",
+        "importPath": "twisted.internet",
+        "description": "twisted.internet",
+        "isExtraImport": true,
+        "detail": "twisted.internet",
+        "documentation": {}
+    },
+    {
+        "label": "Process",
+        "importPath": "multiprocessing",
+        "description": "multiprocessing",
+        "isExtraImport": true,
+        "detail": "multiprocessing",
+        "documentation": {}
+    },
+    {
+        "label": "Queue",
+        "importPath": "multiprocessing",
+        "description": "multiprocessing",
+        "isExtraImport": true,
+        "detail": "multiprocessing",
+        "documentation": {}
+    },
+    {
+        "label": "pymongo",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pymongo",
+        "description": "pymongo",
+        "detail": "pymongo",
+        "documentation": {}
+    },
+    {
+        "label": "streamlit",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "streamlit",
+        "description": "streamlit",
+        "detail": "streamlit",
+        "documentation": {}
+    },
+    {
+        "label": "run_scrapy_chatbot_version",
+        "importPath": "Scraping.Scraping",
+        "description": "Scraping.Scraping",
+        "isExtraImport": true,
+        "detail": "Scraping.Scraping",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
+        "documentation": {}
+    },
+    {
+        "label": "Courier",
+        "importPath": "trycourier",
+        "description": "trycourier",
+        "isExtraImport": true,
+        "detail": "trycourier",
+        "documentation": {}
+    },
+    {
+        "label": "secrets",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "secrets",
+        "description": "secrets",
+        "detail": "secrets",
+        "documentation": {}
+    },
+    {
+        "label": "PasswordHasher",
+        "importPath": "argon2",
+        "description": "argon2",
+        "isExtraImport": true,
+        "detail": "argon2",
+        "documentation": {}
+    },
+    {
+        "label": "requests",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
+        "documentation": {}
+    },
+    {
+        "label": "st_lottie",
+        "importPath": "streamlit_lottie",
+        "description": "streamlit_lottie",
+        "isExtraImport": true,
+        "detail": "streamlit_lottie",
+        "documentation": {}
+    },
+    {
+        "label": "option_menu",
+        "importPath": "streamlit_option_menu",
+        "description": "streamlit_option_menu",
+        "isExtraImport": true,
+        "detail": "streamlit_option_menu",
+        "documentation": {}
+    },
+    {
+        "label": "EncryptedCookieManager",
+        "importPath": "streamlit_cookies_manager",
+        "description": "streamlit_cookies_manager",
+        "isExtraImport": true,
+        "detail": "streamlit_cookies_manager",
+        "documentation": {}
+    },
+    {
+        "label": "check_unique_telegram_key",
+        "importPath": "functions.utils_create_bot",
+        "description": "functions.utils_create_bot",
+        "isExtraImport": true,
+        "detail": "functions.utils_create_bot",
+        "documentation": {}
+    },
+    {
+        "label": "save_new_chatbot",
+        "importPath": "functions.utils_create_bot",
+        "description": "functions.utils_create_bot",
+        "isExtraImport": true,
+        "detail": "functions.utils_create_bot",
+        "documentation": {}
+    },
+    {
+        "label": "generate_chatbot_version",
+        "importPath": "functions.utils_create_bot",
+        "description": "functions.utils_create_bot",
+        "isExtraImport": true,
+        "detail": "functions.utils_create_bot",
+        "documentation": {}
+    },
+    {
+        "label": "upload_chatbot_version",
+        "importPath": "functions.utils_create_bot",
+        "description": "functions.utils_create_bot",
+        "isExtraImport": true,
+        "detail": "functions.utils_create_bot",
+        "documentation": {}
+    },
+    {
+        "label": "switch_page",
+        "importPath": "streamlit_extras.switch_page_button",
+        "description": "streamlit_extras.switch_page_button",
+        "isExtraImport": true,
+        "detail": "streamlit_extras.switch_page_button",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "time",
+        "description": "time",
+        "detail": "time",
+        "documentation": {}
+    },
+    {
+        "label": "__login__",
+        "importPath": "packages.streamlit_login.widgets",
+        "description": "packages.streamlit_login.widgets",
+        "isExtraImport": true,
+        "detail": "packages.streamlit_login.widgets",
+        "documentation": {}
+    },
+    {
+        "label": "IfbSpider",
+        "kind": 6,
+        "importPath": "Scraping.Scraping",
+        "description": "Scraping.Scraping",
+        "peekOfCode": "class IfbSpider(scrapy.Spider):\n    name = \"ifb_spider\"\n    start_urls = []\n    custom_settings = {\n        \"DEPTH_LIMIT\": 2,\n        \"DOWNLOAD_DELAY\": 0.5,\n    }\n    accepted_files = [\"pdf\"]\n    allowed_domains = []\n    content_element = \"#content\"",
+        "detail": "Scraping.Scraping",
+        "documentation": {}
+    },
+    {
+        "label": "run_scrapy_chatbot_version",
+        "kind": 2,
+        "importPath": "Scraping.Scraping",
+        "description": "Scraping.Scraping",
+        "peekOfCode": "def run_scrapy_chatbot_version(start_urls, depth_limit, download_delay, accepted_files, allowed_domains, content_element, result_file_path):\n    def f(q):\n        try:\n            IfbSpider.set_spider_params(start_urls, depth_limit, download_delay, accepted_files, allowed_domains, content_element, result_file_path)\n            runner = crawler.CrawlerRunner()\n            deferred = runner.crawl(IfbSpider)\n            deferred.addBoth(lambda _: reactor.stop())\n            reactor.run()\n            q.put(None)\n        except Exception as e:",
+        "detail": "Scraping.Scraping",
+        "documentation": {}
+    },
+    {
+        "label": "init_connection",
+        "kind": 2,
+        "importPath": "functions.utils_create_bot",
+        "description": "functions.utils_create_bot",
+        "peekOfCode": "def init_connection():\n    client = pymongo.MongoClient(st.secrets[\"mongo\"][\"url\"])\n    db = client.TCC\n    return db\ndb = init_connection()\nchatbots_collection = db.chatbots\nversions_collection = db.chatbot_versions\ndef check_unique_telegram_key(telegram_key: str) -> bool:\n    return True\ndef save_new_chatbot(",
+        "detail": "functions.utils_create_bot",
+        "documentation": {}
+    },
+    {
+        "label": "check_unique_telegram_key",
+        "kind": 2,
+        "importPath": "functions.utils_create_bot",
+        "description": "functions.utils_create_bot",
+        "peekOfCode": "def check_unique_telegram_key(telegram_key: str) -> bool:\n    return True\ndef save_new_chatbot(\n    chatbot_name,\n    telegram_api_key,\n    chatbot_description,\n    start_url,\n    allowed_domains,\n    allowed_files,\n    content_element,",
+        "detail": "functions.utils_create_bot",
+        "documentation": {}
+    },
+    {
+        "label": "save_new_chatbot",
+        "kind": 2,
+        "importPath": "functions.utils_create_bot",
+        "description": "functions.utils_create_bot",
+        "peekOfCode": "def save_new_chatbot(\n    chatbot_name,\n    telegram_api_key,\n    chatbot_description,\n    start_url,\n    allowed_domains,\n    allowed_files,\n    content_element,\n    requests_delay_ms,\n    max_assync_requests,",
+        "detail": "functions.utils_create_bot",
+        "documentation": {}
+    },
+    {
+        "label": "get_chatbot_info",
+        "kind": 2,
+        "importPath": "functions.utils_create_bot",
+        "description": "functions.utils_create_bot",
+        "peekOfCode": "def get_chatbot_info(bot_id):\n    try:\n        print(bot_id)\n        chatbot_info = chatbots_collection.find_one({\"_id\": bot_id})\n        return chatbot_info\n    except Exception as e:\n        print(f\"Erro ao buscar informações do chatbot no MongoDB: {e}\")\n        return None\ndef generate_chatbot_version(bot_id, version_name):\n    # Busque as informações do chatbot no MongoDB",
+        "detail": "functions.utils_create_bot",
+        "documentation": {}
+    },
+    {
+        "label": "generate_chatbot_version",
+        "kind": 2,
+        "importPath": "functions.utils_create_bot",
+        "description": "functions.utils_create_bot",
+        "peekOfCode": "def generate_chatbot_version(bot_id, version_name):\n    # Busque as informações do chatbot no MongoDB\n    chatbot_info = get_chatbot_info(bot_id)\n    chatbot_name = chatbot_info.get(\"chatbot_name\")\n    if chatbot_info:\n        start_urls = [chatbot_info.get(\"start_url\")]\n        accepted_files = chatbot_info.get(\"allowed_files\")\n        allowed_domains = chatbot_info.get(\"allowed_domains\")\n        depth_limit = chatbot_info.get(\"depth_limit\")\n        download_delay = chatbot_info.get(\"download_delay\")",
+        "detail": "functions.utils_create_bot",
+        "documentation": {}
+    },
+    {
+        "label": "upload_chatbot_version",
+        "kind": 2,
+        "importPath": "functions.utils_create_bot",
+        "description": "functions.utils_create_bot",
+        "peekOfCode": "def upload_chatbot_version(chatbot_id,version_id, file_path):\n    # Ler o conteúdo do arquivo\n    with open(file_path, \"r\") as file:\n        content = file.read()\n    # Criar a estrutura de dados\n    data = {\n        \"chatbot_id\": chatbot_id,\n        \"version_id\": version_id,\n        \"created_at\": datetime.now(),\n        \"content\": content,",
+        "detail": "functions.utils_create_bot",
+        "documentation": {}
+    },
+    {
+        "label": "db",
+        "kind": 5,
+        "importPath": "functions.utils_create_bot",
+        "description": "functions.utils_create_bot",
+        "peekOfCode": "db = init_connection()\nchatbots_collection = db.chatbots\nversions_collection = db.chatbot_versions\ndef check_unique_telegram_key(telegram_key: str) -> bool:\n    return True\ndef save_new_chatbot(\n    chatbot_name,\n    telegram_api_key,\n    chatbot_description,\n    start_url,",
+        "detail": "functions.utils_create_bot",
+        "documentation": {}
+    },
+    {
+        "label": "chatbots_collection",
+        "kind": 5,
+        "importPath": "functions.utils_create_bot",
+        "description": "functions.utils_create_bot",
+        "peekOfCode": "chatbots_collection = db.chatbots\nversions_collection = db.chatbot_versions\ndef check_unique_telegram_key(telegram_key: str) -> bool:\n    return True\ndef save_new_chatbot(\n    chatbot_name,\n    telegram_api_key,\n    chatbot_description,\n    start_url,\n    allowed_domains,",
+        "detail": "functions.utils_create_bot",
+        "documentation": {}
+    },
+    {
+        "label": "versions_collection",
+        "kind": 5,
+        "importPath": "functions.utils_create_bot",
+        "description": "functions.utils_create_bot",
+        "peekOfCode": "versions_collection = db.chatbot_versions\ndef check_unique_telegram_key(telegram_key: str) -> bool:\n    return True\ndef save_new_chatbot(\n    chatbot_name,\n    telegram_api_key,\n    chatbot_description,\n    start_url,\n    allowed_domains,\n    allowed_files,",
+        "detail": "functions.utils_create_bot",
+        "documentation": {}
+    },
+    {
+        "label": "init_connection",
+        "kind": 2,
+        "importPath": "packages.streamlit_login.utils",
+        "description": "packages.streamlit_login.utils",
+        "peekOfCode": "def init_connection():\n    client = pymongo.MongoClient(st.secrets[\"mongo\"][\"url\"])\n    db = client.TCC\n    return db.users\ncollection = init_connection()\nph = PasswordHasher() \ndef check_usr_pass(username: str, password: str):\n    \"\"\"\n    Authenticates the username and password.\n    \"\"\"",
+        "detail": "packages.streamlit_login.utils",
+        "documentation": {}
+    },
+    {
+        "label": "check_usr_pass",
+        "kind": 2,
+        "importPath": "packages.streamlit_login.utils",
+        "description": "packages.streamlit_login.utils",
+        "peekOfCode": "def check_usr_pass(username: str, password: str):\n    \"\"\"\n    Authenticates the username and password.\n    \"\"\"\n    user = collection.find_one({\"username\": username})\n    if user:\n        try:\n            if ph.verify(user['password'], password):\n                return {\"success\": True, \"userId\": str(user['_id'])}\n        except Exception as e:",
+        "detail": "packages.streamlit_login.utils",
+        "documentation": {}
+    },
+    {
+        "label": "load_lottieurl",
+        "kind": 2,
+        "importPath": "packages.streamlit_login.utils",
+        "description": "packages.streamlit_login.utils",
+        "peekOfCode": "def load_lottieurl(url: str) -> str:\n    \"\"\"\n    Fetches the lottie animation using the URL.\n    \"\"\"\n    try:\n        r = requests.get(url)\n        if r.status_code != 200:\n            return None\n        return r.json()\n    except:",
+        "detail": "packages.streamlit_login.utils",
+        "documentation": {}
+    },
+    {
+        "label": "check_valid_name",
+        "kind": 2,
+        "importPath": "packages.streamlit_login.utils",
+        "description": "packages.streamlit_login.utils",
+        "peekOfCode": "def check_valid_name(name_sign_up: str) -> bool:\n    \"\"\"\n    Checks if the user entered a valid name while creating the account.\n    \"\"\"\n    name_regex = (r'^[A-Za-z_][A-Za-z0-9_]*')\n    if re.search(name_regex, name_sign_up):\n        return True\n    return False\ndef check_valid_email(email_sign_up: str) -> bool:\n    \"\"\"",
+        "detail": "packages.streamlit_login.utils",
+        "documentation": {}
+    },
+    {
+        "label": "check_valid_email",
+        "kind": 2,
+        "importPath": "packages.streamlit_login.utils",
+        "description": "packages.streamlit_login.utils",
+        "peekOfCode": "def check_valid_email(email_sign_up: str) -> bool:\n    \"\"\"\n    Checks if the user entered a valid email while creating the account.\n    \"\"\"\n    regex = re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\\.[A-Z|a-z]{2,})+')\n    if re.fullmatch(regex, email_sign_up):\n        return True\n    return False\ndef check_unique_email(email_sign_up: str) -> bool:\n    \"\"\"",
+        "detail": "packages.streamlit_login.utils",
+        "documentation": {}
+    },
+    {
+        "label": "check_unique_email",
+        "kind": 2,
+        "importPath": "packages.streamlit_login.utils",
+        "description": "packages.streamlit_login.utils",
+        "peekOfCode": "def check_unique_email(email_sign_up: str) -> bool:\n    \"\"\"\n    Checks if the email already exists (since email needs to be unique).\n    \"\"\"\n    user = collection.find_one({\"email\": email_sign_up})\n    return not user\ndef non_empty_str_check(username_sign_up: str) -> bool:\n    \"\"\"\n    Checks for non-empty strings.\n    \"\"\"",
+        "detail": "packages.streamlit_login.utils",
+        "documentation": {}
+    },
+    {
+        "label": "non_empty_str_check",
+        "kind": 2,
+        "importPath": "packages.streamlit_login.utils",
+        "description": "packages.streamlit_login.utils",
+        "peekOfCode": "def non_empty_str_check(username_sign_up: str) -> bool:\n    \"\"\"\n    Checks for non-empty strings.\n    \"\"\"\n    empty_count = 0\n    for i in username_sign_up:\n        if i == ' ':\n            empty_count = empty_count + 1\n            if empty_count == len(username_sign_up):\n                return False",
+        "detail": "packages.streamlit_login.utils",
+        "documentation": {}
+    },
+    {
+        "label": "check_unique_usr",
+        "kind": 2,
+        "importPath": "packages.streamlit_login.utils",
+        "description": "packages.streamlit_login.utils",
+        "peekOfCode": "def check_unique_usr(username_sign_up: str):\n    \"\"\"\n    Checks if the username already exists (since username needs to be unique),\n    also checks for non - empty username.\n    \"\"\"\n    user = collection.find_one({\"username\": username_sign_up})\n    if user:\n        return False\n    non_empty_check = non_empty_str_check(username_sign_up)\n    if not non_empty_check:",
+        "detail": "packages.streamlit_login.utils",
+        "documentation": {}
+    },
+    {
+        "label": "register_new_usr",
+        "kind": 2,
+        "importPath": "packages.streamlit_login.utils",
+        "description": "packages.streamlit_login.utils",
+        "peekOfCode": "def register_new_usr(name_sign_up: str, email_sign_up: str, username_sign_up: str, password_sign_up: str) -> None:\n    \"\"\"\n    Saves the information of the new user in the _secret_auth.json file.\n    \"\"\"\n    new_usr_data = {\n        'username': username_sign_up,\n        'name': name_sign_up,\n        'email': email_sign_up,\n        'password': ph.hash(password_sign_up)\n    }",
+        "detail": "packages.streamlit_login.utils",
+        "documentation": {}
+    },
+    {
+        "label": "check_email_exists",
+        "kind": 2,
+        "importPath": "packages.streamlit_login.utils",
+        "description": "packages.streamlit_login.utils",
+        "peekOfCode": "def check_email_exists(email_forgot_passwd: str):\n    \"\"\"\n    Checks if the email entered is present in the _secret_auth.json file.\n    \"\"\"\n    user = collection.find_one({\"email\": email_forgot_passwd})\n    if user:\n        return True, user['username']\n    return False, None\ndef generate_random_passwd() -> str:\n    \"\"\"",
+        "detail": "packages.streamlit_login.utils",
+        "documentation": {}
+    },
+    {
+        "label": "generate_random_passwd",
+        "kind": 2,
+        "importPath": "packages.streamlit_login.utils",
+        "description": "packages.streamlit_login.utils",
+        "peekOfCode": "def generate_random_passwd() -> str:\n    \"\"\"\n    Generates a random password to be sent in email.\n    \"\"\"\n    password_length = 10\n    return secrets.token_urlsafe(password_length)\ndef send_passwd_in_email(auth_token: str, username_forgot_passwd: str, email_forgot_passwd: str, company_name: str, random_password: str, reset_url: str) -> None:\n    \"\"\"\n    Triggers an email to the user containing the randomly generated password.\n    \"\"\"",
+        "detail": "packages.streamlit_login.utils",
+        "documentation": {}
+    },
+    {
+        "label": "send_passwd_in_email",
+        "kind": 2,
+        "importPath": "packages.streamlit_login.utils",
+        "description": "packages.streamlit_login.utils",
+        "peekOfCode": "def send_passwd_in_email(auth_token: str, username_forgot_passwd: str, email_forgot_passwd: str, company_name: str, random_password: str, reset_url: str) -> None:\n    \"\"\"\n    Triggers an email to the user containing the randomly generated password.\n    \"\"\"\n    client = Courier(auth_token = auth_token)\n    resp = client.send_message(\n    message={\n        \"to\": {\n        \"email\": email_forgot_passwd\n        },",
+        "detail": "packages.streamlit_login.utils",
+        "documentation": {}
+    },
+    {
+        "label": "change_passwd",
+        "kind": 2,
+        "importPath": "packages.streamlit_login.utils",
+        "description": "packages.streamlit_login.utils",
+        "peekOfCode": "def change_passwd(email_: str, random_password: str) -> None:\n    \"\"\"\n    Replaces the old password with the newly generated password.\n    \"\"\"\n    user = collection.find_one({\"email\": email_})\n    if user:\n        user['password'] = ph.hash(random_password)\n        collection.update_one({\"_id\": user[\"_id\"]}, {\"$set\": user})\ndef check_current_passwd(email_reset_passwd: str, current_passwd: str) -> bool:\n    \"\"\"",
+        "detail": "packages.streamlit_login.utils",
+        "documentation": {}
+    },
+    {
+        "label": "check_current_passwd",
+        "kind": 2,
+        "importPath": "packages.streamlit_login.utils",
+        "description": "packages.streamlit_login.utils",
+        "peekOfCode": "def check_current_passwd(email_reset_passwd: str, current_passwd: str) -> bool:\n    \"\"\"\n    Authenticates the password entered against the username when \n    resetting the password.\n    \"\"\"\n    user = collection.find_one({\"email\": email_reset_passwd})\n    if user:\n        try:\n            if ph.verify(user['password'], current_passwd):\n                return True",
+        "detail": "packages.streamlit_login.utils",
+        "documentation": {}
+    },
+    {
+        "label": "collection",
+        "kind": 5,
+        "importPath": "packages.streamlit_login.utils",
+        "description": "packages.streamlit_login.utils",
+        "peekOfCode": "collection = init_connection()\nph = PasswordHasher() \ndef check_usr_pass(username: str, password: str):\n    \"\"\"\n    Authenticates the username and password.\n    \"\"\"\n    user = collection.find_one({\"username\": username})\n    if user:\n        try:\n            if ph.verify(user['password'], password):",
+        "detail": "packages.streamlit_login.utils",
+        "documentation": {}
+    },
+    {
+        "label": "ph",
+        "kind": 5,
+        "importPath": "packages.streamlit_login.utils",
+        "description": "packages.streamlit_login.utils",
+        "peekOfCode": "ph = PasswordHasher() \ndef check_usr_pass(username: str, password: str):\n    \"\"\"\n    Authenticates the username and password.\n    \"\"\"\n    user = collection.find_one({\"username\": username})\n    if user:\n        try:\n            if ph.verify(user['password'], password):\n                return {\"success\": True, \"userId\": str(user['_id'])}",
+        "detail": "packages.streamlit_login.utils",
+        "documentation": {}
+    },
+    {
+        "label": "__login__",
+        "kind": 6,
+        "importPath": "packages.streamlit_login.widgets",
+        "description": "packages.streamlit_login.widgets",
+        "peekOfCode": "class __login__:\n    \"\"\"\n    Builds the UI for the Login/ Sign Up page.\n    \"\"\"\n    def __init__(self, auth_token: str, company_name: str, width, height, logout_button_name: str = 'Logout', hide_menu_bool: bool = False, hide_footer_bool: bool = False, hide_sidebar_itens_bool: bool = False, lottie_url: str = \"https://assets8.lottiefiles.com/packages/lf20_ktwnwv5m.json\", password_reset_url: str = ''):\n        \"\"\"\n        Arguments:\n        -----------\n        1. self\n        2. auth_token : The unique authorization token received from - https://www.courier.com/email-api/",
+        "detail": "packages.streamlit_login.widgets",
+        "documentation": {}
+    },
+    {
+        "label": "create_bot_widget",
+        "kind": 2,
+        "importPath": "pages.Criar_bot",
+        "description": "pages.Criar_bot",
+        "peekOfCode": "def create_bot_widget():\n    st.title(\"Criar bot\")\n    # Campo para o nome do bot\n    chatbot_name = st.text_input(\"Nome do Bot\")\n    # Campo para a API KEY do Telegram\n    api_key_telegram = st.text_input(\"API KEY Telegram\", help=\"Obtenha a API KEY no site de documentação.\")\n    check_unique_telegram_key(api_key_telegram)\n    # Campo de descrição do bot (text area)\n    chatbot_description = st.text_area(\"Descrição\")\n    st.divider() ",
+        "detail": "pages.Criar_bot",
+        "documentation": {}
+    },
+    {
+        "label": "__login__obj",
+        "kind": 5,
+        "importPath": "login",
+        "description": "login",
+        "peekOfCode": "__login__obj = __login__(auth_token = \"pk_prod_XNB7MJGSQX4EMBHXE0K17EZE8FCA\", \n                    company_name = \"IFBots\",\n                    width = 200, height = 250, \n                    logout_button_name = 'Sair',\n                    hide_menu_bool = True, \n                    hide_footer_bool = True, \n                    hide_sidebar_itens_bool = True,\n                    lottie_url = 'https://assets2.lottiefiles.com/packages/lf20_jcikwtux.json',\n                    password_reset_url = st.secrets[\"PASSWORD_RESET_URL\"])\nLOGGED_IN = __login__obj.build_login_ui()",
+        "detail": "login",
+        "documentation": {}
+    },
+    {
+        "label": "LOGGED_IN",
+        "kind": 5,
+        "importPath": "login",
+        "description": "login",
+        "peekOfCode": "LOGGED_IN = __login__obj.build_login_ui()\nif LOGGED_IN == True:\n    __login__obj.show_sidebar_itens()\n    st.markdown(\"Your Streamlit Application Begins here!\")",
+        "detail": "login",
+        "documentation": {}
+    }
+]

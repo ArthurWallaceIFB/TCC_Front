@@ -1,0 +1,47 @@
+.st-emotion-cache-1wmy9hl .e1f1d6gn0 {
+    background: #2a2e38;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    /* cursor: pointer; */
+}
+
+.st-emotion-cache-1wmy9hl .e1f1d6gn0:hover {
+    background: #222733;
+}
+
+.element-container:has(#button-after-create-bot)+div button {
+    float: right;
+}
+
+
+.element-container:has(#button-after-update-version)+div{
+    position: absolute;
+
+}
+
+.element-container:has(#button-after-update-version)+div button {
+    float: right;
+    margin-right: 2rem;
+    background: transparent;
+}
+
+
+.element-container:has(#button-after-activate-version)+div{
+    position: absolute;
+
+}
+
+.element-container:has(#button-after-activate-version)+div button {
+    float: right;
+    margin-right: 2rem;
+    background: transparent;
+    border-color: green;
+    color: white;
+}
+
+.element-container:has(#button-after-activate-version)+div button:hover
+{
+    color: white;
+    border-color: green;
+    background-color: green;
+}

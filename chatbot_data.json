@@ -1,0 +1,41 @@
+[
+    {
+        "users_ids": ["1214"],
+        "chatbot_name": "Primeiro_bot",
+        "telegram_api_key": "1345155555555551413",
+        "creation_date": "2023-11-02 20:32:01.817120",
+        "last_update": "2023-11-08 20:32:01.817120",
+        "start_url": "https://www.ifb.edu.br/espaco-do-estudante/estagio/boletins-de-estagio/36579-boletim-de-estagio-n-40-2013-vagas-de-30-10-a-3-11",
+        "allowed_domains": ["www.ifb.edu.br", "ifb.edu.br", "processoseletivo.ifb.edu.br"],
+        "allowed_files": [".pdf"],
+        "requests_delay_ms": 100,
+        "max_assync_requests": 10, 
+        "depth_limit": 2,
+        "active_version": "2",
+        "versions": [
+            {
+                "id": "2",
+                "Urls": ["teste.com", "teste2.com"],
+                "UpdatedAt": "2023-10-05"
+            },
+            {
+                "id": "1",
+                "Urls": ["teste3.com", "teste4.com"],
+                "UpdatedAt": "2023-09-20"
+            }
+        ]
+    },
+    {
+        "users_ids": ["1214"],
+        "chatbot_name": "Segundo_bot",
+        "creation_date": "2023-09-15",
+        "active_version": "1",
+        "versions": [
+            {
+                "id": "1",
+                "Urls": ["teste5.com", "teste6.com"],
+                "UpdatedAt": "2023-09-30"
+            }
+        ]
+    }
+]
