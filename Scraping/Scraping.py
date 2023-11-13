@@ -40,6 +40,7 @@ class IfbSpider(scrapy.Spider):
         cls.result_file_path = result_file_path
 
     def __init__(self, *args, **kwargs):
+        print("Scrapy iniciado")
         super(IfbSpider, self).__init__(*args, **kwargs)
         self.data = []
         self.json_file = open(f"{self.result_file_path}", "w", encoding="utf-8")
@@ -147,10 +148,15 @@ def run_scrapy_chatbot_version(start_urls, depth_limit, download_delay, accepted
     print("Params: ", start_urls, depth_limit, download_delay, accepted_files, allowed_domains, content_element, result_file_path)
     q = Queue()
     p = Process(target=f, args=(q,))
+    print("Queue: ", q)
+    print("Process: ", p)
     p.start()
     result = q.get()
+    print("result: ", result)
     p.join()
-
+    print("Process after join: ", p)
+    
+    print("final result: ", result)
     if result is not None:
         raise result
 
