@@ -1,5 +1,6 @@
 import io
 import os
+import re
 
 import json
 from urllib.parse import urlparse
@@ -61,6 +62,7 @@ class IfbSpider(scrapy.Spider):
         texto_limpo = " ".join(texto_limpo.split())
 
         return texto_limpo
+    
 
     def extrair_texto_pdf(self, pdf_content):
         pdf_text = ""
@@ -69,6 +71,8 @@ class IfbSpider(scrapy.Spider):
         for page in pdf.pages:
             pdf_text += page.extract_text()
 
+        pdf_text = re.sub(r'\s+', ' ', pdf_text)
+        pdf_text = re.sub(r'[^\w\s]', '', pdf_text)
         return pdf_text
 
     def parse(self, response):
