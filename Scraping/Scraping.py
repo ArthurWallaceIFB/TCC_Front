@@ -144,22 +144,25 @@ def run_scrapy_chatbot_version(start_urls, depth_limit, download_delay, accepted
             print("Error in run_scrapy_chatbot_version: ", e)
             q.put(e)
 
-    print("Start Scraping")
-    print("Params: ", start_urls, depth_limit, download_delay, accepted_files, allowed_domains, content_element, result_file_path)
-    q = Queue()
-    p = Process(target=f, args=(q,))
-    print("Queue: ", q)
-    print("Process: ", p)
-    p.start()
-    result = q.get()
-    print("result: ", result)
-    p.join()
-    print("Process after join: ", p)
     
-    print("final result: ", result)
-    if result is not None:
-        raise result
-
+    try:
+        print("Start Scraping")
+        print("Params: ", start_urls, depth_limit, download_delay, accepted_files, allowed_domains, content_element, result_file_path)
+        q = Queue()
+        p = Process(target=f, args=(q,))
+        print("Queue: ", q)
+        print("Process: ", p)
+        p.start()
+        result = q.get()
+        print("result: ", result)
+        p.join()
+        print("Process after join: ", p)
+        
+        print("final result: ", result)
+        if result is not None:
+            raise result
+    except Exception as e:
+            print("Error in run_scrapy_chatbot_version executinho: ", e)
     
 
 # if __name__ == "__main__":
