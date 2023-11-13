@@ -153,6 +153,7 @@ def run_scrapy_chatbot_version(start_urls, depth_limit, download_delay, accepted
         print("Queue: ", q)
         print("Process: ", p)
         p.start()
+        print("Process started: ", p)
         result = q.get()
         print("result: ", result)
         p.join()
@@ -161,6 +162,7 @@ def run_scrapy_chatbot_version(start_urls, depth_limit, download_delay, accepted
         print("final result: ", result)
         if result is not None:
             raise result
+        
     except Exception as e:
             print("Error in run_scrapy_chatbot_version executinho: ", e)
     
