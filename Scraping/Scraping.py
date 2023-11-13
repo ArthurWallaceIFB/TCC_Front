@@ -134,8 +134,11 @@ def run_scrapy_chatbot_version(start_urls, depth_limit, download_delay, accepted
             reactor.run()
             q.put(None)
         except Exception as e:
+            print("Error in run_scrapy_chatbot_version: ", e)
             q.put(e)
 
+    print("Start Scraping")
+    print("Params: ", start_urls, depth_limit, download_delay, accepted_files, allowed_domains, content_element, result_file_path)
     q = Queue()
     p = Process(target=f, args=(q,))
     p.start()
