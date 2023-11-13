@@ -43,6 +43,12 @@ class IfbSpider(scrapy.Spider):
         super(IfbSpider, self).__init__(*args, **kwargs)
         self.data = []
         self.json_file = open(f"{self.result_file_path}", "w", encoding="utf-8")
+        configure_logging(install_root_handler=False)
+        logging.basicConfig(
+            filename="scrapy.log",
+            format="%(levelname)s: %(message)s",
+            level=logging.DEBUG,
+        )
     
 
     def limpar_texto_html(self, html):
