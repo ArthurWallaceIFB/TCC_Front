@@ -87,6 +87,15 @@ def generate_chatbot_version(bot_id, version_name):
             output_filename = f"chatbot_{bot_id}_version_{version_name}.json"
 
             with st.spinner(f'Gerando a versão {version_name} do chatbot...'):
+                
+                print("Before call scrapy params: ", start_urls,
+                    depth_limit,
+                    download_delay,
+                    accepted_files,
+                    allowed_domains,
+                    content_element,
+                    output_filename)
+                
                 run_scrapy_chatbot_version(
                     start_urls,
                     depth_limit,
