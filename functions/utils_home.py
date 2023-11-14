@@ -4,6 +4,7 @@ from Scraping.Scraping import run_scrapy_chatbot_version
 from datetime import datetime
 from bson import ObjectId
 from functions.utils_chatbot import generate_chatbot_version
+import requests
 
 @st.cache_resource
 def init_connection():
@@ -11,6 +12,9 @@ def init_connection():
     db = client.TCC
     return db
 db = init_connection()
+
+api_url = st.secrets["API_URL"]
+print(api_url)
 
 chatbots_collection = db.chatbots
 versions_collection = db.chatbot_versions
@@ -42,8 +46,15 @@ def activate_version_by_id(version_id_db):
             chatbots_collection.update_one({"_id": version["chatbot_id"]}, {"$set": {"active_version": version["version_id"]}})
             #st.success(f"Versão ativada com sucesso para o Chatbot de ID: {version['chatbot_id']}")
             
-            
-            #TODO ADICIONAR REQUEST API PARA BUSCAR NOVAMENTE A VERSÃO NO MONGO
+            request_url = f"{api_url}/atualizar_bot" # Substitua pela URL correta da sua API
+            payload = {"chatbot_id": str(version["chatbot_id"])}
+            response = requests.post(request_url, json=payload)
+            if response.status_code == 200:
+                # A request foi bem-sucedida
+                return True
+            else:
+                raise Exception(response.json())
+                return False
             
             return True
         else:
@@ -51,7 +62,8 @@ def activate_version_by_id(version_id_db):
             return False
     
     except Exception as e:
-        #st.error(f"Erro ao ativar a versão no MongoDB: {e}")
+        print("Erro: ", e)
+        st.error(f"Erro ao ativar a versão: {e}")
         return False
 
 
@@ -94,5 +106,6 @@ def update_chatbot_version(chatbot_id):
             return False
 
     except Exception as e:
+        print("Erro: ", e)
         st.error(f"Erro ao atualizar a versão do chatbot no MongoDB: {e}")
         return False

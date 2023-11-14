@@ -17,7 +17,11 @@ def Home_widget():
     with open('style.css') as f:
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
-    dados = get_user_chatbots(userId)
+    with st.spinner(f'Buscando os dados do usuário...'):
+        dados = get_user_chatbots(userId)
+    if dados is None:
+        st.error("Erro ao buscar os dados do usuário!")
+        st.stop()
     
     # Carregando os dados do arquivo JSON
     # with open('chatbot_data.json', 'r') as json_file:
@@ -68,7 +72,7 @@ def Home_widget():
             if container.button("Atualizar", key=button_key):
                 atualizar_versao(bot_id)
                 
-            return "Ativo 🟢"
+            return "Ativa 🟢"
         else:
             container.markdown('<span id="button-after-activate-version"></span>', unsafe_allow_html=True)
             button_key = f"ativar_{bot_id}_{version_name}"
@@ -79,14 +83,32 @@ def Home_widget():
             delete_button_key = f"deletar_{bot_id}_{version_name}"
             if container.button("🗑️", key=delete_button_key):
                 deletar_versao(version_name, version_id_db)
-            return "Inativo"
+            return "Inativa"
 
     # Mostrar versões do chatbot selecionado
     for bot in dados:
         if bot['chatbot_name'] == selected_chatbot:
             st.subheader(f"**Chatbot: {bot['chatbot_name']}**")
-            if bot.get('creation_date'):
-                st.write(f"**Data de criação:** {datetime.strptime(str(bot['creation_date']), '%Y-%m-%d %H:%M:%S.%f').strftime('%d/%m/%Y %H:%M:%S')}")
+            with st.expander("Detalhes do bot"):
+                if bot.get('creation_date'):
+                    st.write(f"**Data de criação:** {datetime.strptime(str(bot['creation_date']), '%Y-%m-%d %H:%M:%S.%f').strftime('%d/%m/%Y %H:%M:%S')}")
+                st.write(f"**URL Inicial:** {bot['start_url']}")
+                st.write(f"**Domínios permitidos:** {bot['allowed_domains']}")
+                st.write(f"**Arquivos permitidos:** {bot['allowed_files']}")
+                
+            #      "chatbot_name": chatbot_name,
+            # "UserIds": [user_id],
+            # "telegram_api_key": telegram_api_key,
+            # "initial_message": initial_message,
+            # "start_url": start_url,
+            # "allowed_domains": allowed_domains.split(","),
+            # "allowed_files": allowed_files.split(","),
+            # "download_delay": requests_delay_ms,
+            # "max_assync_requests": max_assync_requests,
+            # "depth_limit": depth_limit,
+            # "content_element": content_element,
+            # "active_version": version_id
+            
             
 
             if bot.get('versions'):

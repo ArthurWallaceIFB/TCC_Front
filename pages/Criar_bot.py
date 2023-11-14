@@ -22,7 +22,7 @@ def create_bot_widget():
     check_unique_telegram_key(api_key_telegram)
     
     # Campo de descrição do bot (text area)
-    chatbot_description = st.text_area("Descrição")
+    initial_message = st.text_area("Mensagem de boas-vindas", placeholder="Digite a mensagem de boas vindas que será apresentada na 1ª interação do usuário!")
 
     st.divider() 
     st.subheader("Configurações")
@@ -56,7 +56,7 @@ def create_bot_widget():
     # Botões para Salvar, Limpar e Cancelar
     if st.button("Salvar"):
         version_id = '1.0'
-        chatbot_id = save_new_chatbot(chatbot_name, api_key_telegram, chatbot_description, start_url, allowed_domains, allowed_files, content_element, requests_delay_seg, max_assync_requests, depth_limit, userId, version_id)
+        chatbot_id = save_new_chatbot(chatbot_name, api_key_telegram, initial_message, start_url, allowed_domains, allowed_files, content_element, requests_delay_seg, max_assync_requests, depth_limit, userId, version_id)
         if chatbot_id:
             
             st.success(f"Bot '{chatbot_name}' salvo com sucesso!")

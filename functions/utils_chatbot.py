@@ -3,6 +3,7 @@ import streamlit as st
 from Scraping.Scraping import run_scrapy_chatbot_version
 from datetime import datetime
 import os
+import requests
 
 
 @st.cache_resource
@@ -11,10 +12,13 @@ def init_connection():
     db = client.TCC
     return db
 
+
 db = init_connection()
 
 chatbots_collection = db.chatbots
 versions_collection = db.chatbot_versions
+
+api_url = st.secrets["API_URL"]
 
 
 def check_unique_telegram_key(telegram_key: str) -> bool:
@@ -24,7 +28,7 @@ def check_unique_telegram_key(telegram_key: str) -> bool:
 def save_new_chatbot(
     chatbot_name,
     telegram_api_key,
-    chatbot_description,
+    initial_message,
     start_url,
     allowed_domains,
     allowed_files,
@@ -41,7 +45,7 @@ def save_new_chatbot(
             "chatbot_name": chatbot_name,
             "UserIds": [user_id],
             "telegram_api_key": telegram_api_key,
-            "chatbot_description": chatbot_description,
+            "initial_message": initial_message,
             "start_url": start_url,
             "allowed_domains": allowed_domains.split(","),
             "allowed_files": allowed_files.split(","),
@@ -111,6 +115,17 @@ def generate_chatbot_version(bot_id, version_name):
             with st.spinner(f'Salvando os dados da versão {version_name} no banco...'):
                 return_upload_version = upload_chatbot_version(bot_id,version_name, output_filename)
             st.success("Salvo com sucesso!")
+            
+            with st.spinner(f'Adicionando versão {version_name} ao bot no Telegram...'):
+                request_url = f"{api_url}/iniciar_bot" # Substitua pela URL correta da sua API
+                payload = {"chatbot_id": bot_id}
+                response = requests.post(request_url, json=payload)
+            if response.status_code == 200:
+                st.success("Versão adicionada com sucesso!")
+                return True
+            else:
+                raise Exception(response.json())
+                return False
             
             return True
                 

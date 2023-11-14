@@ -184,6 +184,15 @@
         "documentation": {}
     },
     {
+        "label": "requests",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
+        "documentation": {}
+    },
+    {
         "label": "ObjectId",
         "importPath": "bson",
         "description": "bson",
@@ -254,15 +263,6 @@
         "description": "argon2",
         "isExtraImport": true,
         "detail": "argon2",
-        "documentation": {}
-    },
-    {
-        "label": "requests",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "requests",
-        "description": "requests",
-        "detail": "requests",
         "documentation": {}
     },
     {
@@ -445,7 +445,7 @@
         "kind": 2,
         "importPath": "functions.utils_chatbot",
         "description": "functions.utils_chatbot",
-        "peekOfCode": "def init_connection():\n    client = pymongo.MongoClient(st.secrets[\"mongo\"][\"url\"])\n    db = client.TCC\n    return db\ndb = init_connection()\nchatbots_collection = db.chatbots\nversions_collection = db.chatbot_versions\ndef check_unique_telegram_key(telegram_key: str) -> bool:\n    return True\ndef save_new_chatbot(",
+        "peekOfCode": "def init_connection():\n    client = pymongo.MongoClient(st.secrets[\"mongo\"][\"url\"])\n    db = client.TCC\n    return db\ndb = init_connection()\nchatbots_collection = db.chatbots\nversions_collection = db.chatbot_versions\napi_url = st.secrets[\"API_URL\"]\ndef check_unique_telegram_key(telegram_key: str) -> bool:\n    return True",
         "detail": "functions.utils_chatbot",
         "documentation": {}
     },
@@ -454,7 +454,7 @@
         "kind": 2,
         "importPath": "functions.utils_chatbot",
         "description": "functions.utils_chatbot",
-        "peekOfCode": "def check_unique_telegram_key(telegram_key: str) -> bool:\n    return True\ndef save_new_chatbot(\n    chatbot_name,\n    telegram_api_key,\n    chatbot_description,\n    start_url,\n    allowed_domains,\n    allowed_files,\n    content_element,",
+        "peekOfCode": "def check_unique_telegram_key(telegram_key: str) -> bool:\n    return True\ndef save_new_chatbot(\n    chatbot_name,\n    telegram_api_key,\n    initial_message,\n    start_url,\n    allowed_domains,\n    allowed_files,\n    content_element,",
         "detail": "functions.utils_chatbot",
         "documentation": {}
     },
@@ -463,7 +463,7 @@
         "kind": 2,
         "importPath": "functions.utils_chatbot",
         "description": "functions.utils_chatbot",
-        "peekOfCode": "def save_new_chatbot(\n    chatbot_name,\n    telegram_api_key,\n    chatbot_description,\n    start_url,\n    allowed_domains,\n    allowed_files,\n    content_element,\n    requests_delay_ms,\n    max_assync_requests,",
+        "peekOfCode": "def save_new_chatbot(\n    chatbot_name,\n    telegram_api_key,\n    initial_message,\n    start_url,\n    allowed_domains,\n    allowed_files,\n    content_element,\n    requests_delay_ms,\n    max_assync_requests,",
         "detail": "functions.utils_chatbot",
         "documentation": {}
     },
@@ -499,7 +499,7 @@
         "kind": 5,
         "importPath": "functions.utils_chatbot",
         "description": "functions.utils_chatbot",
-        "peekOfCode": "db = init_connection()\nchatbots_collection = db.chatbots\nversions_collection = db.chatbot_versions\ndef check_unique_telegram_key(telegram_key: str) -> bool:\n    return True\ndef save_new_chatbot(\n    chatbot_name,\n    telegram_api_key,\n    chatbot_description,\n    start_url,",
+        "peekOfCode": "db = init_connection()\nchatbots_collection = db.chatbots\nversions_collection = db.chatbot_versions\napi_url = st.secrets[\"API_URL\"]\ndef check_unique_telegram_key(telegram_key: str) -> bool:\n    return True\ndef save_new_chatbot(\n    chatbot_name,\n    telegram_api_key,\n    initial_message,",
         "detail": "functions.utils_chatbot",
         "documentation": {}
     },
@@ -508,7 +508,7 @@
         "kind": 5,
         "importPath": "functions.utils_chatbot",
         "description": "functions.utils_chatbot",
-        "peekOfCode": "chatbots_collection = db.chatbots\nversions_collection = db.chatbot_versions\ndef check_unique_telegram_key(telegram_key: str) -> bool:\n    return True\ndef save_new_chatbot(\n    chatbot_name,\n    telegram_api_key,\n    chatbot_description,\n    start_url,\n    allowed_domains,",
+        "peekOfCode": "chatbots_collection = db.chatbots\nversions_collection = db.chatbot_versions\napi_url = st.secrets[\"API_URL\"]\ndef check_unique_telegram_key(telegram_key: str) -> bool:\n    return True\ndef save_new_chatbot(\n    chatbot_name,\n    telegram_api_key,\n    initial_message,\n    start_url,",
         "detail": "functions.utils_chatbot",
         "documentation": {}
     },
@@ -517,7 +517,16 @@
         "kind": 5,
         "importPath": "functions.utils_chatbot",
         "description": "functions.utils_chatbot",
-        "peekOfCode": "versions_collection = db.chatbot_versions\ndef check_unique_telegram_key(telegram_key: str) -> bool:\n    return True\ndef save_new_chatbot(\n    chatbot_name,\n    telegram_api_key,\n    chatbot_description,\n    start_url,\n    allowed_domains,\n    allowed_files,",
+        "peekOfCode": "versions_collection = db.chatbot_versions\napi_url = st.secrets[\"API_URL\"]\ndef check_unique_telegram_key(telegram_key: str) -> bool:\n    return True\ndef save_new_chatbot(\n    chatbot_name,\n    telegram_api_key,\n    initial_message,\n    start_url,\n    allowed_domains,",
+        "detail": "functions.utils_chatbot",
+        "documentation": {}
+    },
+    {
+        "label": "api_url",
+        "kind": 5,
+        "importPath": "functions.utils_chatbot",
+        "description": "functions.utils_chatbot",
+        "peekOfCode": "api_url = st.secrets[\"API_URL\"]\ndef check_unique_telegram_key(telegram_key: str) -> bool:\n    return True\ndef save_new_chatbot(\n    chatbot_name,\n    telegram_api_key,\n    initial_message,\n    start_url,\n    allowed_domains,\n    allowed_files,",
         "detail": "functions.utils_chatbot",
         "documentation": {}
     },
@@ -526,7 +535,7 @@
         "kind": 2,
         "importPath": "functions.utils_home",
         "description": "functions.utils_home",
-        "peekOfCode": "def init_connection():\n    client = pymongo.MongoClient(st.secrets[\"mongo\"][\"url\"])\n    db = client.TCC\n    return db\ndb = init_connection()\nchatbots_collection = db.chatbots\nversions_collection = db.chatbot_versions\ndef get_user_chatbots(user_id):\n    try:\n        user_chatbots = chatbots_collection.find({\"UserIds\": user_id})",
+        "peekOfCode": "def init_connection():\n    client = pymongo.MongoClient(st.secrets[\"mongo\"][\"url\"])\n    db = client.TCC\n    return db\ndb = init_connection()\napi_url = st.secrets[\"API_URL\"]\nprint(api_url)\nchatbots_collection = db.chatbots\nversions_collection = db.chatbot_versions\ndef get_user_chatbots(user_id):",
         "detail": "functions.utils_home",
         "documentation": {}
     },
@@ -544,7 +553,7 @@
         "kind": 2,
         "importPath": "functions.utils_home",
         "description": "functions.utils_home",
-        "peekOfCode": "def activate_version_by_id(version_id_db):\n    try:\n        # Encontrar a versão pelo ID\n        version = versions_collection.find_one({\"_id\": version_id_db})\n        if version:\n            # Atualizar o campo 'actual_version' na collection de chatbots\n            chatbots_collection.update_one({\"_id\": version[\"chatbot_id\"]}, {\"$set\": {\"active_version\": version[\"version_id\"]}})\n            #st.success(f\"Versão ativada com sucesso para o Chatbot de ID: {version['chatbot_id']}\")\n            #TODO ADICIONAR REQUEST API PARA BUSCAR NOVAMENTE A VERSÃO NO MONGO\n            return True",
+        "peekOfCode": "def activate_version_by_id(version_id_db):\n    try:\n        # Encontrar a versão pelo ID\n        version = versions_collection.find_one({\"_id\": version_id_db})\n        if version:\n            # Atualizar o campo 'actual_version' na collection de chatbots\n            chatbots_collection.update_one({\"_id\": version[\"chatbot_id\"]}, {\"$set\": {\"active_version\": version[\"version_id\"]}})\n            #st.success(f\"Versão ativada com sucesso para o Chatbot de ID: {version['chatbot_id']}\")\n            request_url = f\"{api_url}/atualizar_bot\" # Substitua pela URL correta da sua API\n            payload = {\"chatbot_id\": str(version[\"chatbot_id\"])}",
         "detail": "functions.utils_home",
         "documentation": {}
     },
@@ -571,7 +580,16 @@
         "kind": 5,
         "importPath": "functions.utils_home",
         "description": "functions.utils_home",
-        "peekOfCode": "db = init_connection()\nchatbots_collection = db.chatbots\nversions_collection = db.chatbot_versions\ndef get_user_chatbots(user_id):\n    try:\n        user_chatbots = chatbots_collection.find({\"UserIds\": user_id})\n        user_list = list(user_chatbots)\n         # Para cada chatbot do usuário, busca as versões e adiciona ao campo \"versions\"\n        for chatbot in user_list:\n            chatbot_id = ObjectId(chatbot[\"_id\"])",
+        "peekOfCode": "db = init_connection()\napi_url = st.secrets[\"API_URL\"]\nprint(api_url)\nchatbots_collection = db.chatbots\nversions_collection = db.chatbot_versions\ndef get_user_chatbots(user_id):\n    try:\n        user_chatbots = chatbots_collection.find({\"UserIds\": user_id})\n        user_list = list(user_chatbots)\n         # Para cada chatbot do usuário, busca as versões e adiciona ao campo \"versions\"",
+        "detail": "functions.utils_home",
+        "documentation": {}
+    },
+    {
+        "label": "api_url",
+        "kind": 5,
+        "importPath": "functions.utils_home",
+        "description": "functions.utils_home",
+        "peekOfCode": "api_url = st.secrets[\"API_URL\"]\nprint(api_url)\nchatbots_collection = db.chatbots\nversions_collection = db.chatbot_versions\ndef get_user_chatbots(user_id):\n    try:\n        user_chatbots = chatbots_collection.find({\"UserIds\": user_id})\n        user_list = list(user_chatbots)\n         # Para cada chatbot do usuário, busca as versões e adiciona ao campo \"versions\"\n        for chatbot in user_list:",
         "detail": "functions.utils_home",
         "documentation": {}
     },
@@ -751,7 +769,7 @@
         "kind": 2,
         "importPath": "pages.Criar_bot",
         "description": "pages.Criar_bot",
-        "peekOfCode": "def create_bot_widget():\n    st.title(\"Criar bot\")\n    # Campo para o nome do bot\n    chatbot_name = st.text_input(\"Nome do Bot\")\n    # Campo para a API KEY do Telegram\n    api_key_telegram = st.text_input(\"API KEY Telegram\", help=\"Obtenha a API KEY no site de documentação.\")\n    check_unique_telegram_key(api_key_telegram)\n    # Campo de descrição do bot (text area)\n    chatbot_description = st.text_area(\"Descrição\")\n    st.divider() ",
+        "peekOfCode": "def create_bot_widget():\n    st.title(\"Criar bot\")\n    # Campo para o nome do bot\n    chatbot_name = st.text_input(\"Nome do Bot\")\n    # Campo para a API KEY do Telegram\n    api_key_telegram = st.text_input(\"API KEY Telegram\", help=\"Obtenha a API KEY no site de documentação.\")\n    check_unique_telegram_key(api_key_telegram)\n    # Campo de descrição do bot (text area)\n    initial_message = st.text_area(\"Mensagem de boas-vindas\", placeholder=\"Digite a mensagem de boas vindas que será apresentada na 1ª interação do usuário!\")\n    st.divider() ",
         "detail": "pages.Criar_bot",
         "documentation": {}
     },
@@ -769,7 +787,7 @@
         "kind": 2,
         "importPath": "pages.Home",
         "description": "pages.Home",
-        "peekOfCode": "def Home_widget():\n    with open('style.css') as f:\n        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)\n    dados = get_user_chatbots(userId)\n    # Carregando os dados do arquivo JSON\n    # with open('chatbot_data.json', 'r') as json_file:\n    #     dados = json.load(json_file)\n    st.title(\"Gestão de Chatbots 🤖\")\n    st.markdown('<span id=\"button-after-create-bot\"></span>', unsafe_allow_html=True)\n    # Botão para criar um novo chatbot",
+        "peekOfCode": "def Home_widget():\n    with open('style.css') as f:\n        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)\n    with st.spinner(f'Buscando os dados do usuário...'):\n        dados = get_user_chatbots(userId)\n    if dados is None:\n        st.error(\"Erro ao buscar os dados do usuário!\")\n        st.stop()\n    # Carregando os dados do arquivo JSON\n    # with open('chatbot_data.json', 'r') as json_file:",
         "detail": "pages.Home",
         "documentation": {}
     },
