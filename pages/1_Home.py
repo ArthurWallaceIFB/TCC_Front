@@ -1,15 +1,18 @@
 import streamlit as st
+
+st.set_page_config(
+    page_title="Home - IFBots",
+    page_icon="🤖"
+)   
+
 import json
 from streamlit_extras.switch_page_button import switch_page
 import time
 from datetime import datetime
-from functions.utils_home import activate_version_by_id, get_user_chatbots, update_chatbot_version, delete_version_by_id
+from functions.utils_home import (activate_bot_id, activate_version_by_id, delete_version_by_id,
+    disable_bot_id, get_running_bots, get_user_chatbots, update_chatbot_version, delete_bot_id)
 from functions.utils import get_decrypted_cookie, show_logout
 
-# st.set_page_config(
-#     page_title="Home - IFBots",
-#     page_icon="🤖"
-# )   
 
 st.empty()
 
@@ -63,6 +66,38 @@ def Home_widget():
                 st.success(f"Versão {version_name} deletada com sucesso!")
                 time.sleep(0.3)
                 st.rerun()
+    
+    def ativar_bot(bot_id):
+        with st.spinner(f'Ativando o chatbot no Telegram...'):
+            activate_bot_return = activate_bot_id(bot_id)
+            if activate_bot_return == True:
+                st.success(f'Chatbot ativado com sucesso!')
+                time.sleep(0.3)
+                st.rerun()
+            else:
+                st.error(f"Erro ao ativar o chatbot!")
+    
+    def desativar_bot(bot_id):
+        with st.spinner(f'Desativando o chatbot...'):
+            disable_bot_return = disable_bot_id(bot_id)
+            if disable_bot_return == True:
+                st.success(f"Chatbot desativado com sucesso!")
+                time.sleep(0.3)
+                st.rerun()
+            else:
+                 st.error(f"Erro ao desativar o chatbot!")
+    
+    def deletar_bot(bot_id):
+        with st.spinner(f'Deletando o chatbot...'):
+            delete_bot_return = delete_bot_id(bot_id)
+            if delete_bot_return == True:
+                st.success(f"Chatbot deletado com sucesso!")
+                time.sleep(0.3)
+                st.rerun()
+            else:
+                st.error(f"Erro ao deletar o chatbot!")
+        
+
 
     # Função para exibir o status (emoji 🟢 ao lado do texto quando o status é ativo)
     def exibir_status(status, version_name, bot_id, version_id_db):
@@ -92,26 +127,42 @@ def Home_widget():
             with st.expander("Detalhes do bot"):
                 if bot.get('creation_date'):
                     st.write(f"**Data de criação:** {datetime.strptime(str(bot['creation_date']), '%Y-%m-%d %H:%M:%S.%f').strftime('%d/%m/%Y %H:%M:%S')}")
+                st.write(f"**Versão Ativa:** {bot['active_version']}")
                 st.write(f"**URL Inicial:** {bot['start_url']}")
-                st.write(f"**Domínios permitidos:** {bot['allowed_domains']}")
-                st.write(f"**Arquivos permitidos:** {bot['allowed_files']}")
-                
-            #      "chatbot_name": chatbot_name,
-            # "UserIds": [user_id],
-            # "telegram_api_key": telegram_api_key,
-            # "initial_message": initial_message,
-            # "start_url": start_url,
-            # "allowed_domains": allowed_domains.split(","),
-            # "allowed_files": allowed_files.split(","),
-            # "download_delay": requests_delay_ms,
-            # "max_assync_requests": max_assync_requests,
-            # "depth_limit": depth_limit,
-            # "content_element": content_element,
-            # "active_version": version_id
-            
+                st.write(f"**Domínios permitidos:** {', '.join(bot['allowed_domains'])}")
+                st.write(f"**Arquivos permitidos:** {', '.join(bot['allowed_files'])}")
+                st.divider()
+                st.subheader("Configurações Avançadas")
+                st.write(f"**Profundidade de busca:** {bot['depth_limit']}")
+                st.write(f"**Delay entre requisições:** {bot['download_delay']}s")
+                st.write(f"**Máximo de requisições Assync:** {bot['max_assync_requests']}")
+                st.write(f"**Elemento HTML de conteúdo:** {bot['content_element']}")
+                if st.button("Deletar bot"):
+                    deletar_bot(bot['_id'])
+            try:
+                running_bots = get_running_bots()
+                #print(running_bots)
+                if bot['telegram_api_key'] in running_bots['processes']:
+                    st.subheader(f"Status do Chatbot no Telegram: **:green[{'Ativo'}]**")
+                    st.write(f"**URL do bot:** {bot['telegram_bot_url']}")
+                    st.markdown('<span id="button-after-disable-chatbot"></span>', unsafe_allow_html=True)
+                    button_key = f"desativar_{bot['_id']}"
+                    if st.button("Desativar", key=button_key):
+                        desativar_bot(bot['_id'])
+                else:
+                    st.subheader(f"Status do Chatbot no Telegram: **:red[{'Desativado'}]**")
+                    st.markdown('<span id="button-after-activate-chatbot"></span>', unsafe_allow_html=True)
+                    button_key = f"ativar_{bot['_id']}"
+                    if st.button("Ativar", key=button_key):
+                        ativar_bot(bot['_id'])
+                        
+            except Exception as e:
+                st.error(f"Erro ao buscar os bots em execução! Verifique a disponibilidade do servidor: {e}")
+                st.stop()
             
 
             if bot.get('versions'):
+                st.divider()
                 for versao in bot['versions']:
                     container = st.container()
                     container.markdown('#### Versão: {0}'.format(versao['version_id']), unsafe_allow_html=True)

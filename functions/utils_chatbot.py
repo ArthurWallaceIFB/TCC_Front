@@ -4,6 +4,7 @@ from Scraping.Scraping import run_scrapy_chatbot_version
 from datetime import datetime
 import os
 import requests
+import json
 
 
 @st.cache_resource
@@ -22,11 +23,28 @@ api_url = st.secrets["API_URL"]
 
 
 def check_unique_telegram_key(telegram_key: str) -> bool:
-    return True
+    existing_chatbot = chatbots_collection.find_one({"telegram_api_key": telegram_key})
+    # Se a chave já estiver em uso, retornar False; caso contrário, retornar True.
+    return existing_chatbot is None
+
+def validate_telegram_api_key(telegram_key: str) -> bool:
+    # URL de validação da API do Telegram
+    url = f"https://api.telegram.org/bot{telegram_key}/getMe"
+
+    try:
+        response = requests.post(url)
+        data = response.json()
+
+        # Verifica se a resposta contém o campo 'ok' como True
+        return data.get('ok', False)
+    except Exception as e:
+        print(f"Erro ao validar a API key do Telegram: {e}")
+        return False
 
 
 def save_new_chatbot(
     chatbot_name,
+    telegram_bot_url,
     telegram_api_key,
     initial_message,
     start_url,
@@ -43,11 +61,13 @@ def save_new_chatbot(
         # Monte o objeto do novo bot
         bot_data = {
             "chatbot_name": chatbot_name,
+            "creation_date": datetime.now(),
             "UserIds": [user_id],
+            "telegram_bot_url": telegram_bot_url,
             "telegram_api_key": telegram_api_key,
             "initial_message": initial_message,
             "start_url": start_url,
-            "allowed_domains": allowed_domains.split(","),
+            "allowed_domains": allowed_domains,
             "allowed_files": allowed_files.split(","),
             "download_delay": requests_delay_ms,
             "max_assync_requests": max_assync_requests,
@@ -118,7 +138,7 @@ def generate_chatbot_version(bot_id, version_name):
             
             with st.spinner(f'Adicionando versão {version_name} ao bot no Telegram...'):
                 request_url = f"{api_url}/iniciar_bot" # Substitua pela URL correta da sua API
-                payload = {"chatbot_id": bot_id}
+                payload = {"chatbot_id": str(bot_id)}
                 response = requests.post(request_url, json=payload)
             if response.status_code == 200:
                 st.success("Versão adicionada com sucesso!")
@@ -151,7 +171,7 @@ def upload_chatbot_version(chatbot_id,version_id, file_path):
             "chatbot_id": chatbot_id,
             "version_id": version_id,
             "created_at": datetime.now(),
-            "content": content,
+            "content": json.loads(content),
         }
 
         # Inserir os dados na coleção

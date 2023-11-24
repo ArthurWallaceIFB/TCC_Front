@@ -36,6 +36,77 @@ def get_user_chatbots(user_id):
         print(f"Erro ao buscar chatbots do usuário no MongoDB: {e}")
         return None
     
+
+def activate_bot_id(bot_id):
+    try:
+        request_url = f"{api_url}/iniciar_bot" # Substitua pela URL correta da sua API
+        payload = {"chatbot_id": str(bot_id)}
+        response = requests.post(request_url, json=payload)
+        if response.status_code == 200:
+            #st.success("Versão adicionada com sucesso!")
+            return True
+        else:
+            raise Exception(response.json())
+            return False
+    
+    except Exception as e:
+        st.error(f"Erro ao desativar o bot: {e}")
+        return False
+    
+def disable_bot_id(bot_id):
+    try:
+        request_url = f"{api_url}/encerrar_bot" # Substitua pela URL correta da sua API
+        payload = {"chatbot_id": str(bot_id)}
+        response = requests.post(request_url, json=payload)
+        if response.status_code == 200:
+            #st.success("Versão adicionada com sucesso!")
+            return True
+        else:
+            raise Exception(response.json())
+            return False
+    
+    except Exception as e:
+        st.error(f"Erro ao desativar o bot: {e}")
+        return False
+
+
+def delete_bot_id(bot_id):
+    try:
+        
+        if disable_bot_id(str(bot_id)):
+            # Obtém todas as versões associadas ao bot
+            versions = versions_collection.find({"chatbot_id": bot_id})
+            
+            # Remove todas as versões associadas ao bot
+            for version in versions:
+                versions_collection.delete_one({"_id": version["_id"]})
+                
+            result = chatbots_collection.delete_one({"_id": bot_id})
+            
+            if result.deleted_count == 1:
+                # Se um documento foi removido, desative o bot na API
+                return True
+            else:
+                return False
+    
+    except Exception as e:
+        st.error(f"Erro ao deletar o bot: {e}")
+        return False
+    
+    
+def get_running_bots():
+    try:
+        request_url = f"{api_url}/listar_processos" # Substitua pela URL correta da sua API
+        response = requests.get(request_url)
+        if response.status_code == 200:
+            #st.success("Versão adicionada com sucesso!")
+            return response.json()
+        else:
+            raise Exception(response.json())
+    
+    except Exception as e:
+        raise Exception(e)
+    
 def activate_version_by_id(version_id_db):
     try:
         # Encontrar a versão pelo ID

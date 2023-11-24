@@ -209,6 +209,14 @@
         "documentation": {}
     },
     {
+        "label": "validate_telegram_api_key",
+        "importPath": "functions.utils_chatbot",
+        "description": "functions.utils_chatbot",
+        "isExtraImport": true,
+        "detail": "functions.utils_chatbot",
+        "documentation": {}
+    },
+    {
         "label": "check_unique_telegram_key",
         "importPath": "functions.utils_chatbot",
         "description": "functions.utils_chatbot",
@@ -306,38 +314,6 @@
         "documentation": {}
     },
     {
-        "label": "get_decrypted_cookie",
-        "importPath": "functions.utils",
-        "description": "functions.utils",
-        "isExtraImport": true,
-        "detail": "functions.utils",
-        "documentation": {}
-    },
-    {
-        "label": "show_logout",
-        "importPath": "functions.utils",
-        "description": "functions.utils",
-        "isExtraImport": true,
-        "detail": "functions.utils",
-        "documentation": {}
-    },
-    {
-        "label": "get_decrypted_cookie",
-        "importPath": "functions.utils",
-        "description": "functions.utils",
-        "isExtraImport": true,
-        "detail": "functions.utils",
-        "documentation": {}
-    },
-    {
-        "label": "show_logout",
-        "importPath": "functions.utils",
-        "description": "functions.utils",
-        "isExtraImport": true,
-        "detail": "functions.utils",
-        "documentation": {}
-    },
-    {
         "label": "time",
         "kind": 6,
         "isExtraImport": true,
@@ -347,7 +323,39 @@
         "documentation": {}
     },
     {
+        "label": "activate_bot_id",
+        "importPath": "functions.utils_home",
+        "description": "functions.utils_home",
+        "isExtraImport": true,
+        "detail": "functions.utils_home",
+        "documentation": {}
+    },
+    {
         "label": "activate_version_by_id",
+        "importPath": "functions.utils_home",
+        "description": "functions.utils_home",
+        "isExtraImport": true,
+        "detail": "functions.utils_home",
+        "documentation": {}
+    },
+    {
+        "label": "delete_version_by_id",
+        "importPath": "functions.utils_home",
+        "description": "functions.utils_home",
+        "isExtraImport": true,
+        "detail": "functions.utils_home",
+        "documentation": {}
+    },
+    {
+        "label": "disable_bot_id",
+        "importPath": "functions.utils_home",
+        "description": "functions.utils_home",
+        "isExtraImport": true,
+        "detail": "functions.utils_home",
+        "documentation": {}
+    },
+    {
+        "label": "get_running_bots",
         "importPath": "functions.utils_home",
         "description": "functions.utils_home",
         "isExtraImport": true,
@@ -371,11 +379,51 @@
         "documentation": {}
     },
     {
-        "label": "delete_version_by_id",
+        "label": "delete_bot_id",
         "importPath": "functions.utils_home",
         "description": "functions.utils_home",
         "isExtraImport": true,
         "detail": "functions.utils_home",
+        "documentation": {}
+    },
+    {
+        "label": "get_decrypted_cookie",
+        "importPath": "functions.utils",
+        "description": "functions.utils",
+        "isExtraImport": true,
+        "detail": "functions.utils",
+        "documentation": {}
+    },
+    {
+        "label": "show_logout",
+        "importPath": "functions.utils",
+        "description": "functions.utils",
+        "isExtraImport": true,
+        "detail": "functions.utils",
+        "documentation": {}
+    },
+    {
+        "label": "get_decrypted_cookie",
+        "importPath": "functions.utils",
+        "description": "functions.utils",
+        "isExtraImport": true,
+        "detail": "functions.utils",
+        "documentation": {}
+    },
+    {
+        "label": "show_logout",
+        "importPath": "functions.utils",
+        "description": "functions.utils",
+        "isExtraImport": true,
+        "detail": "functions.utils",
+        "documentation": {}
+    },
+    {
+        "label": "st_tags",
+        "importPath": "streamlit_tags",
+        "description": "streamlit_tags",
+        "isExtraImport": true,
+        "detail": "streamlit_tags",
         "documentation": {}
     },
     {
@@ -445,7 +493,7 @@
         "kind": 2,
         "importPath": "functions.utils_chatbot",
         "description": "functions.utils_chatbot",
-        "peekOfCode": "def init_connection():\n    client = pymongo.MongoClient(st.secrets[\"mongo\"][\"url\"])\n    db = client.TCC\n    return db\ndb = init_connection()\nchatbots_collection = db.chatbots\nversions_collection = db.chatbot_versions\napi_url = st.secrets[\"API_URL\"]\ndef check_unique_telegram_key(telegram_key: str) -> bool:\n    return True",
+        "peekOfCode": "def init_connection():\n    client = pymongo.MongoClient(st.secrets[\"mongo\"][\"url\"])\n    db = client.TCC\n    return db\ndb = init_connection()\nchatbots_collection = db.chatbots\nversions_collection = db.chatbot_versions\napi_url = st.secrets[\"API_URL\"]\ndef check_unique_telegram_key(telegram_key: str) -> bool:\n    existing_chatbot = chatbots_collection.find_one({\"telegram_api_key\": telegram_key})",
         "detail": "functions.utils_chatbot",
         "documentation": {}
     },
@@ -454,7 +502,16 @@
         "kind": 2,
         "importPath": "functions.utils_chatbot",
         "description": "functions.utils_chatbot",
-        "peekOfCode": "def check_unique_telegram_key(telegram_key: str) -> bool:\n    return True\ndef save_new_chatbot(\n    chatbot_name,\n    telegram_api_key,\n    initial_message,\n    start_url,\n    allowed_domains,\n    allowed_files,\n    content_element,",
+        "peekOfCode": "def check_unique_telegram_key(telegram_key: str) -> bool:\n    existing_chatbot = chatbots_collection.find_one({\"telegram_api_key\": telegram_key})\n    # Se a chave já estiver em uso, retornar False; caso contrário, retornar True.\n    return existing_chatbot is None\ndef validate_telegram_api_key(telegram_key: str) -> bool:\n    # URL de validação da API do Telegram\n    url = f\"https://api.telegram.org/bot{telegram_key}/getMe\"\n    try:\n        response = requests.post(url)\n        data = response.json()",
+        "detail": "functions.utils_chatbot",
+        "documentation": {}
+    },
+    {
+        "label": "validate_telegram_api_key",
+        "kind": 2,
+        "importPath": "functions.utils_chatbot",
+        "description": "functions.utils_chatbot",
+        "peekOfCode": "def validate_telegram_api_key(telegram_key: str) -> bool:\n    # URL de validação da API do Telegram\n    url = f\"https://api.telegram.org/bot{telegram_key}/getMe\"\n    try:\n        response = requests.post(url)\n        data = response.json()\n        # Verifica se a resposta contém o campo 'ok' como True\n        return data.get('ok', False)\n    except Exception as e:\n        print(f\"Erro ao validar a API key do Telegram: {e}\")",
         "detail": "functions.utils_chatbot",
         "documentation": {}
     },
@@ -463,7 +520,7 @@
         "kind": 2,
         "importPath": "functions.utils_chatbot",
         "description": "functions.utils_chatbot",
-        "peekOfCode": "def save_new_chatbot(\n    chatbot_name,\n    telegram_api_key,\n    initial_message,\n    start_url,\n    allowed_domains,\n    allowed_files,\n    content_element,\n    requests_delay_ms,\n    max_assync_requests,",
+        "peekOfCode": "def save_new_chatbot(\n    chatbot_name,\n    telegram_bot_url,\n    telegram_api_key,\n    initial_message,\n    start_url,\n    allowed_domains,\n    allowed_files,\n    content_element,\n    requests_delay_ms,",
         "detail": "functions.utils_chatbot",
         "documentation": {}
     },
@@ -499,7 +556,7 @@
         "kind": 5,
         "importPath": "functions.utils_chatbot",
         "description": "functions.utils_chatbot",
-        "peekOfCode": "db = init_connection()\nchatbots_collection = db.chatbots\nversions_collection = db.chatbot_versions\napi_url = st.secrets[\"API_URL\"]\ndef check_unique_telegram_key(telegram_key: str) -> bool:\n    return True\ndef save_new_chatbot(\n    chatbot_name,\n    telegram_api_key,\n    initial_message,",
+        "peekOfCode": "db = init_connection()\nchatbots_collection = db.chatbots\nversions_collection = db.chatbot_versions\napi_url = st.secrets[\"API_URL\"]\ndef check_unique_telegram_key(telegram_key: str) -> bool:\n    existing_chatbot = chatbots_collection.find_one({\"telegram_api_key\": telegram_key})\n    # Se a chave já estiver em uso, retornar False; caso contrário, retornar True.\n    return existing_chatbot is None\ndef validate_telegram_api_key(telegram_key: str) -> bool:\n    # URL de validação da API do Telegram",
         "detail": "functions.utils_chatbot",
         "documentation": {}
     },
@@ -508,7 +565,7 @@
         "kind": 5,
         "importPath": "functions.utils_chatbot",
         "description": "functions.utils_chatbot",
-        "peekOfCode": "chatbots_collection = db.chatbots\nversions_collection = db.chatbot_versions\napi_url = st.secrets[\"API_URL\"]\ndef check_unique_telegram_key(telegram_key: str) -> bool:\n    return True\ndef save_new_chatbot(\n    chatbot_name,\n    telegram_api_key,\n    initial_message,\n    start_url,",
+        "peekOfCode": "chatbots_collection = db.chatbots\nversions_collection = db.chatbot_versions\napi_url = st.secrets[\"API_URL\"]\ndef check_unique_telegram_key(telegram_key: str) -> bool:\n    existing_chatbot = chatbots_collection.find_one({\"telegram_api_key\": telegram_key})\n    # Se a chave já estiver em uso, retornar False; caso contrário, retornar True.\n    return existing_chatbot is None\ndef validate_telegram_api_key(telegram_key: str) -> bool:\n    # URL de validação da API do Telegram\n    url = f\"https://api.telegram.org/bot{telegram_key}/getMe\"",
         "detail": "functions.utils_chatbot",
         "documentation": {}
     },
@@ -517,7 +574,7 @@
         "kind": 5,
         "importPath": "functions.utils_chatbot",
         "description": "functions.utils_chatbot",
-        "peekOfCode": "versions_collection = db.chatbot_versions\napi_url = st.secrets[\"API_URL\"]\ndef check_unique_telegram_key(telegram_key: str) -> bool:\n    return True\ndef save_new_chatbot(\n    chatbot_name,\n    telegram_api_key,\n    initial_message,\n    start_url,\n    allowed_domains,",
+        "peekOfCode": "versions_collection = db.chatbot_versions\napi_url = st.secrets[\"API_URL\"]\ndef check_unique_telegram_key(telegram_key: str) -> bool:\n    existing_chatbot = chatbots_collection.find_one({\"telegram_api_key\": telegram_key})\n    # Se a chave já estiver em uso, retornar False; caso contrário, retornar True.\n    return existing_chatbot is None\ndef validate_telegram_api_key(telegram_key: str) -> bool:\n    # URL de validação da API do Telegram\n    url = f\"https://api.telegram.org/bot{telegram_key}/getMe\"\n    try:",
         "detail": "functions.utils_chatbot",
         "documentation": {}
     },
@@ -526,7 +583,7 @@
         "kind": 5,
         "importPath": "functions.utils_chatbot",
         "description": "functions.utils_chatbot",
-        "peekOfCode": "api_url = st.secrets[\"API_URL\"]\ndef check_unique_telegram_key(telegram_key: str) -> bool:\n    return True\ndef save_new_chatbot(\n    chatbot_name,\n    telegram_api_key,\n    initial_message,\n    start_url,\n    allowed_domains,\n    allowed_files,",
+        "peekOfCode": "api_url = st.secrets[\"API_URL\"]\ndef check_unique_telegram_key(telegram_key: str) -> bool:\n    existing_chatbot = chatbots_collection.find_one({\"telegram_api_key\": telegram_key})\n    # Se a chave já estiver em uso, retornar False; caso contrário, retornar True.\n    return existing_chatbot is None\ndef validate_telegram_api_key(telegram_key: str) -> bool:\n    # URL de validação da API do Telegram\n    url = f\"https://api.telegram.org/bot{telegram_key}/getMe\"\n    try:\n        response = requests.post(url)",
         "detail": "functions.utils_chatbot",
         "documentation": {}
     },
@@ -545,6 +602,42 @@
         "importPath": "functions.utils_home",
         "description": "functions.utils_home",
         "peekOfCode": "def get_user_chatbots(user_id):\n    try:\n        user_chatbots = chatbots_collection.find({\"UserIds\": user_id})\n        user_list = list(user_chatbots)\n         # Para cada chatbot do usuário, busca as versões e adiciona ao campo \"versions\"\n        for chatbot in user_list:\n            chatbot_id = ObjectId(chatbot[\"_id\"])\n            versions = list(versions_collection.find({\"chatbot_id\": chatbot_id}, {\"_id\": 1, \"chatbot_id\": 1, \"version_id\": 1, \"created_at\": 1}).sort(\"created_at\", pymongo.DESCENDING))\n            chatbot[\"versions\"] = versions\n        return user_list",
+        "detail": "functions.utils_home",
+        "documentation": {}
+    },
+    {
+        "label": "activate_bot_id",
+        "kind": 2,
+        "importPath": "functions.utils_home",
+        "description": "functions.utils_home",
+        "peekOfCode": "def activate_bot_id(bot_id):\n    try:\n        request_url = f\"{api_url}/iniciar_bot\" # Substitua pela URL correta da sua API\n        payload = {\"chatbot_id\": str(bot_id)}\n        response = requests.post(request_url, json=payload)\n        if response.status_code == 200:\n            #st.success(\"Versão adicionada com sucesso!\")\n            return True\n        else:\n            raise Exception(response.json())",
+        "detail": "functions.utils_home",
+        "documentation": {}
+    },
+    {
+        "label": "disable_bot_id",
+        "kind": 2,
+        "importPath": "functions.utils_home",
+        "description": "functions.utils_home",
+        "peekOfCode": "def disable_bot_id(bot_id):\n    try:\n        request_url = f\"{api_url}/encerrar_bot\" # Substitua pela URL correta da sua API\n        payload = {\"chatbot_id\": str(bot_id)}\n        response = requests.post(request_url, json=payload)\n        if response.status_code == 200:\n            #st.success(\"Versão adicionada com sucesso!\")\n            return True\n        else:\n            raise Exception(response.json())",
+        "detail": "functions.utils_home",
+        "documentation": {}
+    },
+    {
+        "label": "delete_bot_id",
+        "kind": 2,
+        "importPath": "functions.utils_home",
+        "description": "functions.utils_home",
+        "peekOfCode": "def delete_bot_id(bot_id):\n    try:\n        if disable_bot_id(str(bot_id)):\n            # Obtém todas as versões associadas ao bot\n            versions = versions_collection.find({\"chatbot_id\": bot_id})\n            # Remove todas as versões associadas ao bot\n            for version in versions:\n                versions_collection.delete_one({\"_id\": version[\"_id\"]})\n            result = chatbots_collection.delete_one({\"_id\": bot_id})\n            if result.deleted_count == 1:",
+        "detail": "functions.utils_home",
+        "documentation": {}
+    },
+    {
+        "label": "get_running_bots",
+        "kind": 2,
+        "importPath": "functions.utils_home",
+        "description": "functions.utils_home",
+        "peekOfCode": "def get_running_bots():\n    try:\n        request_url = f\"{api_url}/listar_processos\" # Substitua pela URL correta da sua API\n        response = requests.get(request_url)\n        if response.status_code == 200:\n            #st.success(\"Versão adicionada com sucesso!\")\n            return response.json()\n        else:\n            raise Exception(response.json())\n    except Exception as e:",
         "detail": "functions.utils_home",
         "documentation": {}
     },
@@ -765,57 +858,57 @@
         "documentation": {}
     },
     {
-        "label": "create_bot_widget",
-        "kind": 2,
-        "importPath": "pages.Criar_bot",
-        "description": "pages.Criar_bot",
-        "peekOfCode": "def create_bot_widget():\n    st.title(\"Criar bot\")\n    # Campo para o nome do bot\n    chatbot_name = st.text_input(\"Nome do Bot\")\n    # Campo para a API KEY do Telegram\n    api_key_telegram = st.text_input(\"API KEY Telegram\", help=\"Obtenha a API KEY no site de documentação.\")\n    check_unique_telegram_key(api_key_telegram)\n    # Campo de descrição do bot (text area)\n    initial_message = st.text_area(\"Mensagem de boas-vindas\", placeholder=\"Digite a mensagem de boas vindas que será apresentada na 1ª interação do usuário!\")\n    st.divider() ",
-        "detail": "pages.Criar_bot",
-        "documentation": {}
-    },
-    {
-        "label": "userId",
-        "kind": 5,
-        "importPath": "pages.Criar_bot",
-        "description": "pages.Criar_bot",
-        "peekOfCode": "userId = None\nif 'LOGGED_IN' in st.session_state and st.session_state['LOGGED_IN'] == True:\n        userId = get_decrypted_cookie(\"__userId__\")\n        show_logout()\n        create_bot_widget()\nelse:\n    switch_page(\"login\")",
-        "detail": "pages.Criar_bot",
-        "documentation": {}
-    },
-    {
         "label": "Home_widget",
         "kind": 2,
-        "importPath": "pages.Home",
-        "description": "pages.Home",
+        "importPath": "pages.1_Home",
+        "description": "pages.1_Home",
         "peekOfCode": "def Home_widget():\n    with open('style.css') as f:\n        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)\n    with st.spinner(f'Buscando os dados do usuário...'):\n        dados = get_user_chatbots(userId)\n    if dados is None:\n        st.error(\"Erro ao buscar os dados do usuário!\")\n        st.stop()\n    # Carregando os dados do arquivo JSON\n    # with open('chatbot_data.json', 'r') as json_file:",
-        "detail": "pages.Home",
+        "detail": "pages.1_Home",
         "documentation": {}
     },
     {
         "label": "userId",
         "kind": 5,
-        "importPath": "pages.Home",
-        "description": "pages.Home",
+        "importPath": "pages.1_Home",
+        "description": "pages.1_Home",
         "peekOfCode": "userId = None\nif 'LOGGED_IN' in st.session_state and st.session_state['LOGGED_IN'] == True:\n        userId = get_decrypted_cookie(\"__userId__\")\n        show_logout()                \n        Home_widget()\nelse:\n    print(\"\\n\\nNot logged HOME\\n\\n\")\n    switch_page(\"login\")",
-        "detail": "pages.Home",
+        "detail": "pages.1_Home",
+        "documentation": {}
+    },
+    {
+        "label": "create_bot_widget",
+        "kind": 2,
+        "importPath": "pages.2_Criar_bot",
+        "description": "pages.2_Criar_bot",
+        "peekOfCode": "def create_bot_widget():\n    st.title(\"Criar Novo Chatbot\")\n    # Campo para o nome do bot\n    chatbot_name = st.text_input(\"Nome do Chatbot :red[*]\")\n    # Campo para a URL do Telegram\n    telegram_bot_url = st.text_input(\n        \"URL do Telegram :red[*]\", help=\"A URL em que seu bot se encontra em execução no Telegram.\"\n    )\n    # Campo para a API KEY do Telegram\n    api_key_telegram = st.text_input(",
+        "detail": "pages.2_Criar_bot",
+        "documentation": {}
+    },
+    {
+        "label": "userId",
+        "kind": 5,
+        "importPath": "pages.2_Criar_bot",
+        "description": "pages.2_Criar_bot",
+        "peekOfCode": "userId = None\nif \"LOGGED_IN\" in st.session_state and st.session_state[\"LOGGED_IN\"] == True:\n    userId = get_decrypted_cookie(\"__userId__\")\n    show_logout()\n    create_bot_widget()\nelse:\n    switch_page(\"login\")",
+        "detail": "pages.2_Criar_bot",
         "documentation": {}
     },
     {
         "label": "__login__obj",
         "kind": 5,
-        "importPath": "login",
-        "description": "login",
+        "importPath": "Login",
+        "description": "Login",
         "peekOfCode": "__login__obj = __login__(auth_token = \"pk_prod_XNB7MJGSQX4EMBHXE0K17EZE8FCA\", \n                    company_name = \"IFBots\",\n                    width = 200, height = 250, \n                    logout_button_name = 'Sair',\n                    hide_menu_bool = True, \n                    hide_footer_bool = True, \n                    hide_sidebar_itens_bool = True,\n                    lottie_url = 'https://assets2.lottiefiles.com/packages/lf20_jcikwtux.json',\n                    password_reset_url = st.secrets[\"PASSWORD_RESET_URL\"])\nLOGGED_IN = __login__obj.build_login_ui()",
-        "detail": "login",
+        "detail": "Login",
         "documentation": {}
     },
     {
         "label": "LOGGED_IN",
         "kind": 5,
-        "importPath": "login",
-        "description": "login",
+        "importPath": "Login",
+        "description": "Login",
         "peekOfCode": "LOGGED_IN = __login__obj.build_login_ui()\nif LOGGED_IN == True:\n    __login__obj.show_sidebar_itens()\n    switch_page(\"Home\")",
-        "detail": "login",
+        "detail": "Login",
         "documentation": {}
     }
 ]
