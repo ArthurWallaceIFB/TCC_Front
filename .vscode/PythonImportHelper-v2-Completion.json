@@ -619,7 +619,7 @@
         "kind": 2,
         "importPath": "functions.utils_home",
         "description": "functions.utils_home",
-        "peekOfCode": "def disable_bot_id(bot_id):\n    try:\n        request_url = f\"{api_url}/encerrar_bot\" # Substitua pela URL correta da sua API\n        payload = {\"chatbot_id\": str(bot_id)}\n        response = requests.post(request_url, json=payload)\n        if response.status_code == 200:\n            #st.success(\"Versão adicionada com sucesso!\")\n            return True\n        else:\n            raise Exception(response.json())",
+        "peekOfCode": "def disable_bot_id(bot_id):\n    try:\n        request_url = f\"{api_url}/encerrar_bot\" # Substitua pela URL correta da sua API\n        payload = {\"chatbot_id\": str(bot_id)}\n        response = requests.post(request_url, json=payload)\n        if response.status_code == 200:\n            #st.success(\"Versão adicionada com sucesso!\")\n            return True\n        elif response.status_code == 500 and response.json()['message'] == \"Bot não encontrado com este token\":\n            return True",
         "detail": "functions.utils_home",
         "documentation": {}
     },

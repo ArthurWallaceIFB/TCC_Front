@@ -61,6 +61,8 @@ def disable_bot_id(bot_id):
         if response.status_code == 200:
             #st.success("Versão adicionada com sucesso!")
             return True
+        elif response.status_code == 500 and response.json()['message'] == "Bot não encontrado com este token":
+            return True
         else:
             raise Exception(response.json())
             return False
